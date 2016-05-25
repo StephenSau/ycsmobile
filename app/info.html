@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<script src="/public/js/vendor/modernizr.js"></script>
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<link href="/public/css/ycsglobal.css" rel="stylesheet" type="text/css">
+
+  <title>壹财税</title>
+  <meta name="keywords" content="..." />
+  <meta name="description" content="..." />
+  <link href="/public/css/info.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<header id="globalTopBar">
+	<top-bar v-cloak>{{title}}</top-bar>
+</header>
+
+<div class="main" id="info" v-cloak>
+	<section v-if="tab.username" class="username-box">
+		<validator name="usernameVt">
+			<p class="form-tips-line">用户名只能修改一次，当前为 <span>{{userInfo.username}}</span></p>
+			<form novalidate>
+				<ol class="form form-username">
+					<li class="form-input-line">
+						<div class="form-area" v-if="username = forms.username.fields.username">
+							<input autocomplete="off" :id="username.id" z-index="1" :class="{'form-text': true}" :type="username.type" v-model="username.value" :placeholder="username.placeholder"  :maxlength="username.maxlength" :field="username.name" v-validate="username.validate"/>
+						</div>
+					</li>
+					<li class="form-button-line"><button class="btn btn-orange" type="button" @click="usernameUpdate" :disabled="$usernameVt.invalid">确认修改</button><a href="/app/user.html?tab=info" class="btn btn-blue">暂不修改</a></li>
+				</ol>
+			</form>
+		</validator>
+	</section>
+	<section v-if="tab.contactor" class="contactor-box">
+		<div class="contactor-list" v-show="!contactor.edit">
+			<ul>
+				<li>
+					<h2 class="c-name">手机用户_6041405205</h2>
+					<p class="c-default">默认联系人</p>
+					<p class="c-area">广东省 广州市 天河区</p>
+					<p class="c-footer">
+						<a class="c-mobile" href="tel:13800138000">135****1569</a>
+						<span class="c-operate">
+							<a href="javascript:void(0);">编辑</a> |
+							<a @click="showDelModal" href="javascript:void(0);">删除</a>
+						</span>
+					</p>
+				</li>
+				<li>
+					<h2 class="c-name">手机用户_6041405205</h2>
+					<p class="c-area">广东省 广州市 天河区</p>
+					<p class="c-footer">
+						<a class="c-mobile" href="tel:13800138000">135****1569</a>
+						<span class="c-operate">
+							<a href="javascript:void(0);">编辑</a> |
+							<a @click="showDelModal" href="javascript:void(0);">删除</a>
+						</span>
+					</p>
+				</li>
+			</ul>
+			<p class="c-addline"><button class="btn btn-orange">添加新联系人</button></p>
+		</div>
+		<div class="contactor" v-show="contactor.edit">
+			<validator name="contactorVt" >
+				<form @sumbit.prevent novalidate>
+					<ol class="form contactor-form">
+						<li class="form-input-line" v-if="cname = forms.contactorForm.fields.cname">
+							<label :for="cname.id">{{cname.label}}</label>
+							<div class="form-area" >
+								<input :id="cname.id" z-index="1" :class="{'form-text': true}" :type="cname.type" v-model="cname.value" :placeholder="cname.placeholder"  :maxlength="cname.maxlength" :field="cname.name" v-validate="cname.validate"/>
+							</div>
+						</li>
+						<li class="form-input-line" v-if="cmobile = forms.contactorForm.fields.cmobile">
+							<label :for="cmobile.id">{{cmobile.label}}</label>
+							<div class="form-area" >
+								<input :id="cmobile.id" z-index="2" :class="{'form-text': true}" :type="cmobile.type" v-model="cmobile.value" :placeholder="cmobile.placeholder"  :maxlength="cmobile.maxlength" :field="cmobile.name" v-validate="cmobile.validate"/>
+							</div>
+						</li>
+						<li class="form-input-line" v-if="carea = forms.contactorForm.fields.carea">
+							<label :for="carea.id">{{carea.label}}</label>
+							<div class="form-area" >
+								<a href="javascript:void(0);">点击选择...</a>
+								<input :id="carea.id" z-index="3" :type="carea.type" v-model="carea.value" :field="carea.name" v-validate="carea.validate"/> 
+							</div>
+						</li>
+						<li class="form-button-line"><button class="btn btn-orange" type="button" :disabled="$contactorVt.invalid">保存联系人信息</button></li>
+					</ol>
+				</form>
+			</validator>
+		</div>
+	</section>
+	<section v-if="tab.mobile" class="mobile-box">
+		<validator name="mobileVt" >
+			<form @submit.prevent novalidate>
+				<ol class="form mobile-form" v-show="forms.mobile.show">
+					<li class="form-input-line form-feet-button" v-if="code = forms.mobile.fields.code">
+						<div class="form-area">
+							<span class="form-msg">{{userInfo.mobile}}</span><button class="btn btn-green" :disabled="code.onCount" @click="showCodeBox(code)">{{code.onCount ? (code.count + '秒'):'发送验证码'}}</button>
+						</div>
+					</li>
+					<li class="form-input-line" v-if="code = forms.mobile.fields.code">
+						<div class="form-area" >
+							<input autocomplete="off" :id="code.id" z-index="1" :class="{'form-text': true}" :type="code.type" v-model="code.value" :placeholder="code.placeholder"  :maxlength="code.maxlength" :field="code.name" v-validate="code.validate"/>
+						</div>
+					</li>
+					<li class="form-button-line"><button class="btn btn-orange" type="button" @click="getAccesskey('mobile')" :disabled="$mobileVt.invalid">验证后绑定新手机</button><a href="/app/user.html?tab=info" class="btn btn-blue">暂不改绑</a></li>
+				</ol>
+			</form>
+		</validator>
+
+		<validator name="newMobileVt">
+			<form @submit.prevent novalidate>
+				<ol class="form" v-show="forms.newMobile.show">
+					<li class="form-input-line form-feet-button">
+						<div class="form-area" v-if="mobile = forms.newMobile.fields.mobile">
+							<input :id="mobile.id" z-index="1" :class="{'form-text': true}" :type="mobile.type" v-model="mobile.value" :placeholder="mobile.placeholder" :maxlength="mobile.maxlength" :field="mobile.name" v-validate="mobile.validate"/><button :disabled="$newMobileVt.mobile.invalid || mobile.onCount" class="btn btn-green" @click="showCodeBox(mobile, true)">{{mobile.onCount ? (mobile.count + '秒'):'发送验证码'}}</button>
+						</div>
+					</li>
+					<li class="form-input-line">
+						<div class="form-area" v-if="ncode = forms.newMobile.fields.code">
+							<input :id="ncode.id" z-index="2" :class="{'form-text': true}" :type="ncode.type" v-model="ncode.value" :placeholder="ncode.placeholder" :maxlength="ncode.maxlength" :field="ncode.name" v-validate="ncode.validate"/>
+						</div>
+					</li>
+					<li class="form-button-line"><button class="btn btn-orange" type="button" @click="rebindMobile" :disabled="$newMobileVt.invalid">确认绑定</button></li>
+				</ol>
+			</form>
+		</validator>
+		<p class="noPhone-line">若当前手机号码已不用或丢失，或无法收到验证码？<br/>
+		请联系客服：<a href="tel:4008-310-866">4008-310-866</a></p>
+	</section>
+	<section v-if="tab.setPassword" class="setPassword-box">
+		<validator name="setPasswordVt">
+			<form novalidate>
+				<ol class="form">
+					<li class="form-input-line form-password-line">
+						<div class="form-area" v-if="spassword = forms.setPassword.fields.password">
+							<input :id="spassword.id" z-index="1" :class="{'form-text': true}" :type="spassword.type" v-model="spassword.value" :placeholder="spassword.placeholder"  :maxlength="spassword.maxlength" :field="spassword.name" v-validate="spassword.validate"/><a href="javascript:void(0)" @click="changeType(spassword)" :class="{'btn-swtich': true, 'on-text': spassword.type === 'text', 'on-password': spassword.type === 'password'}"><span><b>abc</b><em></em><b>…</b></span></a>
+						</div>
+					</li>
+					<li class="form-button-line"><button class="btn btn-orange" type="button" @click="usernameUpdate" :disabled="$setPasswordVt.invalid">设置并保存</button><a href="/app/user.html?tab=info" class="btn btn-blue">暂不设置</a></li>
+				</ol>
+			</form>
+		</validator>
+	</section>
+
+	<section v-if="tab.modifyPassword" class="modifyPassword-box">
+		<validator name="checkPasswordVt" >
+			<form novalidate>
+				<ol class="form checkPassword-form" v-show="forms.checkPassword.show">
+					<li class="form-input-line">
+						<div class="form-area" v-if="cpassword = forms.checkPassword.fields.password">
+							<input :id="cpassword.id" z-index="1" :class="{'form-text': true}" :type="cpassword.type" v-model="cpassword.value" :placeholder="cpassword.placeholder"  :maxlength="cpassword.maxlength" :field="cpassword.name" v-validate="cpassword.validate"/>
+						</div>
+					</li>
+					<li class="form-button-line"><button class="btn btn-orange" type="button" @click="getAccesskey" :disabled="$checkPasswordVt.invalid">验证后设置新密码</button><a href="/app/user.html?tab=info" class="btn btn-blue">暂不设置</a></li>
+				</ol>
+			</form>
+		</validator>
+
+		<validator name="mPasswordVt">
+			<form novalidate>
+				<ol class="form" v-show="forms.modifyPassword.show">
+					<li class="form-input-line">
+						<div class="form-area" v-if="mpassword = forms.modifyPassword.fields.password">
+							<input :id="mpassword.id" z-index="1" :class="{'form-text': true}" :type="mpassword.type" v-model="mpassword.value" :placeholder="mpassword.placeholder"  :maxlength="mpassword.maxlength" :field="mpassword.name" v-validate="mpassword.validate"/><a href="javascript:void(0)" @click="changeType(mpassword)" :class="{'btn-swtich': true, 'on-text': mpassword.type === 'text', 'on-password': mpassword.type === 'password'}"><span><b>abc</b><em></em><b>…</b></span></a>
+						</div>
+					</li>
+					<li class="form-button-line"><button class="btn btn-orange" type="button" @click="rebindMobile" :disabled="$mPasswordVt.invalid">确认修改</button></li>
+				</ol>
+			</form>
+		</validator>
+		<p class="findPassword-line">忘记了现在的登录密码，我要 <a href="/app/info.html?tab=findPassword">找回密码</a></p>
+	</section>
+
+	<section v-if="tab.findPassword" class="findPassword-box">
+		<validator name="checkIdVt">
+			<p class="form-tips-line" v-show="forms.checkId.show">为了确保您的账户安全，需要先通过手机验证身份</p>
+			<form novalidate>
+				<ol class="form form-checkId" v-show="forms.checkId.show">
+					<li class="form-input-line form-feet-button" v-if="fcode = forms.checkId.fields.code">
+						<div class="form-area">
+							<span class="form-msg">{{userInfo.mobile}}</span><button class="btn btn-green" :disabled="fcode.onCount" @click="showCodeBox(fcode)">{{fcode.onCount ? (fcode.count + '秒'):'发送验证码'}}</button>
+						</div>
+					</li>
+					<li class="form-input-line">
+						<div class="form-area" v-if="fcode = forms.checkId.fields.code">
+							<input :id="fcode.id" z-index="1" :class="{'form-text': true}" :type="fcode.type" v-model="fcode.value" :placeholder="fcode.placeholder"  :maxlength="fcode.maxlength" :field="fcode.name" v-validate="fcode.validate"/>
+						</div>
+					</li>
+					<li class="form-button-line"><button class="btn btn-orange" type="button" @click="getAccesskey('findPassword')" :disabled="$checkIdVt.invalid">验证后重新设置密码</button><a href="/app/user.html?tab=info" class="btn btn-blue">暂不设置</a></li>
+				</ol>
+			</form>
+			
+		</validator>
+		<validator name="findPasswordVt">
+			<p class="form-tips-line" v-show="forms.findPassword.show">身份验证成功，请为您的账号设置新的登录密码</p>
+			<form novalidate>
+				<ol class="form" v-show="forms.findPassword.show">
+					<li class="form-password-line">
+						<div class="form-area" v-if="fpassword = forms.findPassword.fields.password">
+							<input :id="fpassword.id" z-index="1" :class="{'form-text': true}" :type="fpassword.type" v-model="fpassword.value" :placeholder="fpassword.placeholder"  :maxlength="fpassword.maxlength" :field="fpassword.name" v-validate="fpassword.validate"/><a href="javascript:void(0)" @click="changeType(fpassword)" :class="{'btn-swtich': true, 'on-text': fpassword.type === 'text', 'on-password': fpassword.type === 'password'}"><span><b>abc</b><em></em><b>...</b></span></a>
+						</div>
+					</li>
+					<li class="form-button-line"><button class="btn btn-orange" type="button" @click="updatePassword('findPassword')" :disabled="$findPasswordVt.invalid">设置并保存新密码</button></li>
+				</ol>
+			</form>
+		</validator>
+	</section>
+	<code-box :url="codeUrl" :show.sync="modals.imgCode"></code-box>
+	<modal :title="contactor.title" :show.sync="contactor.show" effect="fade" v-cloak>
+		<div slot="modal-body"></div>
+		<div slot="modal-footer" class="modal-footer">
+			<button>删除</button>
+			<button @click="hideDelModal">取消</button>
+		</div>
+	</modal>
+	<modal :title="'您还没有登录，请先登录或者快速注册一个新账号'" :show.sync="modals.login" effect="fade" v-cloak>
+		<div slot="modal-body"></div>
+		<div slot="modal-footer" class="modal-footer">
+			<a href="/app/login.html">现在登录</a>
+			<a href="/app/register.html">快速注册</a>
+		</div>
+		<div slot="modal-extend" class="modal-extend">
+			<button @click="hideLoginModal">取消</button>
+		</div>
+	</modal>
+	<o-hint v-bind:show.sync="hintShow" v-bind:hint-text="hint"></o-hint>
+</div>
+
+<footor class="footer" id="footer">
+	<foot :data-static="refreshFlag"></foot>
+</footor>
+
+<script src="http://api.map.baidu.com/api?v=2.0&ak=5hASIZKOvTTW0zGOE2z1L2QLvfP3WmNf" type="text/javascript" charset="utf-8"></script>
+
+<script type="text/javascript" src="/public/js/util.js"></script>
+
+<script type="text/javascript" src="/public/js/vendor/require.js"></script>
+
+<script type="text/javascript" src="/public/js/config.js"></script>
+<script src="/public/js/info.js" type="text/javascript"></script>
+</body>
+</html>

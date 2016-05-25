@@ -1,0 +1,43 @@
+@mixin box-sizing ($modal: border-box) {
+	box-sizing: $modal;
+	-moz-box-sizing: $modal;
+	-webkit-box-sizing: $modal;
+}
+
+.code-line{
+	width: 100%;
+	margin: 0;
+	@include clearfix;
+	.code-text{
+		width: 45%;
+		border: 1px solid $line;
+		background-color: #fff;
+		border-radius: 4px;
+		@include box-sizing;
+		padding: 5px .5em;
+		line-height: 26px;
+	}
+	.code-img{
+		@include box-sizing;
+		font-size: 14px;
+		width: 55%;
+		display: inline-block;
+		padding-right: 6em;
+		padding-left: 1em;
+		position: relative;
+		vertical-align: top;
+		img{
+			max-width: 160px;
+			width: 100%;
+			display: block;
+			height: 38px;
+		}
+		a{
+			border-color: $viOrange;
+			color: $viOrange;
+			position: absolute;
+			right: 0;
+			top: 0;
+		}
+	}
+}

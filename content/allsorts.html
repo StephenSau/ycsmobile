@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--=include ../tpl/_commonhead.html -->
+  <title>全部服务_壹财税</title>
+  <meta name="keywords" content="..." />
+  <meta name="description" content="..." />
+  <link href="/public/css/allsorts.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<!--Global topbar here -->
+<header id="globalTopBar" v-cloak>
+	<top-bar><span v-touch:tap="showCityList">{{selectedCityName.length ? selectedCityName : '广州'}}<i class="fa fa-fw fa-angle-down city-direction"></i></span></top-bar>
+	
+	<div class="city-list-container" v-bind:class="{active: openCityList}">
+		<city-list :show-list.sync="openCityList" selected-city.sync="selectedCity" ip-city="ipCity"></city-list>
+	</div>
+</header>
+
+<section id="allsorts" class="main" v-cloak>
+	<section class="search table" :class="{'active':isActive}">
+		<div class="list clearfix td"  v-touch:tap="submenu">
+			<em v-html="menu.menuTitle"></em>
+
+			<i class="fa fa-fw fa-angle-up" v-if="!isActive"></i>
+			<i class="fa fa-fw fa-angle-down" v-else></i>
+		</div>
+		<div class="search-btn td">
+			<span class="fa fa-fw fa-search"></span>
+		</div>
+		<div class="mask submenu" :style="{'height':maskHeight+'px'}" v-show="isActive" transition="fade">
+			<nav>
+				<dl class="main" v-touch:tap="checkMenu">
+					<dt class="clearfix" :class="{'active':menu.menuDefault.isActive}">全部服务分类<i class="fa fa-fw fa-check" v-show="menu.menuDefault.isActive"></i></dt>
+					<dd class="clearfix" v-for="item in menu.menulist" :class="{'active':item.isActive}" data-index="{{$index}}">{{item.name}}<i class="fa fa-fw fa-check" v-show="item.isActive"></i></dd>
+				</dl>
+			</nav>
+		</div>
+	</section>
+	<ul class="service-list">
+		<li v-for='(index,item) in items'>
+			<a href="#">
+				<div class="pic"><img src="http://fs.1caishui.com/admin/serviceicon/201601/22/194e4612d1.png" alt="" /></div>
+				<div class="detail">
+					<h3>{{item.title}}</h3>
+					<p>{{item.description}}</p>
+					<p><i class="btn coupon-icon">一口价</i><i class="btn coupon-icon">赠送</i></p>
+				</div>
+				<em class="fa fa-fw fa-angle-right direction"></em>
+			</a>
+		</li>
+	</ul>
+
+	<!--import backToTop -->
+	<back-to-top></back-to-top>
+	
+	<!--footer-login here start-->
+	<footer-login></footer-login>
+	
+
+</section>
+
+
+
+<!-- import tpl commonfooter -->
+<!--=include ../tpl/_commonfooter.html -->
+
+<!--=include ../tpl/_commonjs.html -->
+<script src="/public/js/allsorts.js" type="text/javascript"></script>
+
+</body>
+</html>
+

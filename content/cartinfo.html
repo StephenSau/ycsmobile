@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--=include ../tpl/_commonhead.html -->
+  <title>选购页_壹财税</title>
+  <meta name="keywords" content="..." />
+  <meta name="description" content="..." />
+  <link href="/public/css/cartinfo.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<header id="globalTopBar" v-cloak>
+	<top-bar>选购页_壹财税</top-bar>
+</header>
+
+<section id="cartinfo" class="main" v-cloak>
+	<ol class="step">
+		<li class="active">1.确认服务</li>
+		<li>2.选服务商</li>
+		<li>3.提交订单</li>
+		<li>4.在线支付</li>
+	</ol>
+	<section class="service-list">
+		<ul>
+			<li>
+				<div class="title">服务名称</div>
+				<div class="detail">大众创业优选A餐</div>
+			</li>
+			<li>
+				<div class="title">服务区域</div>
+				<div class="detail clearfix">
+					<p class="area">广州市 越秀区</p>
+					<span>重新选择</span>
+				</div>
+			</li>
+			<li>
+				<div class="title">包含内容</div>
+				<div class="detail">
+					<dl>
+						<dd class="clearfix" @click="checkRadio">
+							<div class="des">
+								<div class="item">
+									<p>{{radioTitle}}</p>
+									<p>x {{radioTimes}}</p>
+								</div>
+							</div>
+							<span class="fa fa-fw fa-angle-right"></span>
+						</dd>
+						<dd class="clearfix" @click="checkSize">
+							<div class="des">
+								<div class="item">
+									<p>{{sizeTitle}}</p>
+									<p>x {{sizeTimes}}</p>
+
+									<div class="options">
+										<p>支付方式：{{payType}}</p>
+										<p>服务规格：{{specialType}}</p>
+									</div>
+								</div>
+							</div>
+							<span class="fa fa-fw fa-angle-right"></span>
+						</dd>
+						<dd class="clearfix" @click="checkCheckbox">
+							<div class="des">
+								<div class="item multiple" v-for="item in checkboxInfo">
+									<p>{{item.title}}</p>
+									<p>x {{item.times}}</p>
+								</div>
+							</div>
+							<span class="fa fa-fw fa-angle-right"></span>
+						</dd>
+					</dl>
+				</div>
+			</li>
+		</ul>
+	</section>
+	<section class="consult">
+		<div class="description clearfix">
+			<p>有任何疑问和需要？请点此咨询</p>
+			<p><i class="btn btn-blue">在线咨询</i></p>
+		</div>
+	</section>
+	
+
+	<section class="next-step">
+		<div class="next-btn">
+			<a href="/app/shopCartinfo.html" class="btn btn-orange btn-block">下一步</a>
+		</div>
+	</section>
+
+
+	<!-- import backToTop -->
+	<back-to-top></back-to-top>
+
+
+	<!--modal here import-->
+
+	<modal :show.sync="radioShow" v-cloak>
+		<div slot="modal-body" class="modal-body">
+			<dl class="radio-check">
+				<dd :class="{'active':item.isActive}" v-for="item in radios" @click="checkRadioItem($index)">
+					<div class="des">
+						<p>{{item.title}}</p>
+						<p>x  {{item.times}}</p>
+					</div>
+					<span class="fa fa-fw" :class="{'fa-check' : item.isActive}"></span>
+				</dd>
+			</ul>
+		</div>
+		<div slot="modal-footer" class="modal-footer"></div>
+	</modal>
+
+	<modal :show.sync="sizeShow" v-cloak>
+		<div slot="modal-body" class="modal-body">
+			<ol class="size-check">
+				<li :class="{'active':item.isActive}" v-for="(k0,item)  in sizes" @click="checkSizeItem($index)">
+					<div class="detail">
+						<div class="des">
+							<p>{{item.title}}</p>
+							<p>x  {{item.times}}</p>
+						</div>
+						<span class="fa fa-fw" :class="{'fa-check' : item.isActive}"></span>
+					</div>
+					<div class="options" v-show="item.isActive">
+						<ul>
+							<li v-for="(k1,option) in item.options">
+								<h2>{{option.name}}</h2>
+								<div class="item">
+									<p v-for="(k2,subopt) in option.items"><label>{{subopt.radioItem}}<input type="radio" name="size_{{k0}}_{{k1}}" :checked="subopt.checked" @change="changeSize(k0,k1,k2)"></label></p>
+									
+								</div>
+							</li>
+						</ul>
+						<p><i class="btn btn-green" @click="confirmSize(k0)">确定</i></p>
+					</div>
+				</dd>
+			</ul>
+		</div>
+		<div slot="modal-footer" class="modal-footer"></div>
+	</modal>
+
+	<modal :show.sync="checkboxShow" v-cloak>
+		<div slot="modal-body" class="modal-body">
+			<dl class="checkbox-check">
+				<dd :class="{'active':item.isActive}" v-for="item in checkboxs" @click="checkboxItem($index)">
+					<div class="des">
+						<p>{{item.title}}</p>
+						<p>x  {{item.times}}</p>
+					</div>
+					<span class="fa fa-fw" :class="{'fa-check' : item.isActive}"></span>
+				</dd>
+			</dl>
+			<p><span>可选择多项，至少选择一项</span><i class="btn btn-green" @click="confirmCheckbox">确定</i></p>
+		</div>
+		<div slot="modal-footer" class="modal-footer"></div>
+	</modal>
+</section>
+
+
+<!--import commonfooter module -->
+<!--=include ../tpl/_commonjs.html -->
+
+
+<!--=include ../tpl/_commonjs.html -->
+<script src="/public/js/cartinfo.js" type="text/javascript"></script>
+
+</body>
+</html>
+

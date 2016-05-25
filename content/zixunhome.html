@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--=include ../tpl/_commonhead.html -->
+  <title>资讯_壹财税</title>
+  <meta name="keywords" content="..." />
+  <meta name="description" content="..." />
+  <link href="/public/css/zixunhome.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<!--=include ../tpl/_topbar.html -->
+
+<header id="globalTopBar" v-cloak>
+	<top-bar>壹财税资讯</top-bar>
+	<div class="city-list-wrapper" v-bind:class="{active: showList}">
+		<city-list :show-list.sync="showList" :selected-city.sync="selectedCity" :ip-city="ipCity"></city-list>
+	</div>
+</header>
+
+<div class="main" id="newsList" v-cloak> 
+	<div id="navigation" :class="{ 'active': scrollY > 100 }" >
+		<div id="navigation-inner">
+			<ul>
+				<li v-for="tag in tags" v-touch:tap="selectTag(tag.name)" :class="{ 'active': tag.active }">{{tag.name}}</li>
+			</ul>
+		</div>
+	</div>
+
+	<a class="search" href="search.html" :class="{ 'active': scrollY > 100 }"><i class="fa fa-search" aria-hidden="true"></i></a>
+
+	<section v-for="news in newsList" v-cloak>
+		<a v-if="news.image && news.image.length > 0" class="hadImg">
+			<div class="image" :style="{ backgroundImage: 'url(' + news.image + ')' }"></div>
+			<div class="info">
+				<h3>{{news.title}}</h3>
+
+	
+			</div>
+
+			<div class="clearfix">
+				<div class="hours pull-left">
+					<span v-if="news.days === 0">{{news.hours}}小时前</span>
+					<span v-if="news.days !== 0">{{news.beforePresent}}</span>
+				</div>
+				<div class="columnnames pull-right">{{news.columnnames}}</div>
+			</div>
+		</a>
+
+		<a v-if="(news.image && news.image.length === 0) || !news.image" class="noImg">
+			<h3>{{news.title}}</h3>
+			<div class="clearfix">
+				<div class="hours pull-left">
+					<span v-if="news.days === 0">{{news.hours}}小时前</span>
+					<span v-if="news.days !== 0">{{news.beforePresent}}</span>
+				</div>
+				<div class="columnnames pull-right">{{news.columnnames}}</div>
+			</div>
+		</a>
+	</section>
+
+
+
+	<back-to-top top="300"></back-to-top>
+</div>
+
+<footer id="footerLogin" class="main">
+	<footer-login></footer-login>
+</footer>
+
+
+<!--=include ../tpl/_commonfooter.html -->
+<!--=include ../tpl/_commonjs.html -->
+<script src="/public/js/zixunhome.js" type="text/javascript"></script>
+
+</body>
+</html>

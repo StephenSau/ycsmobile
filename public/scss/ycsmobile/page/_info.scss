@@ -1,0 +1,135 @@
+p, h2{
+	margin: 0;
+	padding: 0;
+}
+
+.username-box, .mobile-form, .setPassword-box, .checkPassword-form, .form-checkId{
+	.form-button-line{
+		.btn:first-child{
+			width: 65%;
+			margin-right: 5%;
+			@include box-sizing;
+		}
+
+		.btn:nth-child(2){
+			width: 30%;
+			@include box-sizing;
+		}
+	}
+}
+
+.username-box, .findPassword-box{
+	padding-top: .71em;
+	li:first-child{
+		border-top: none;
+	}
+}
+
+.username-box, .findPassword-box{
+	.form-tips-line{
+		padding-top: 0;
+		color: $viBlue;
+		span{
+			color: $viOrange;
+		}
+	}
+}
+
+.contactor-list{
+	padding: 1em;
+	
+	li{
+		margin-bottom: 1em;
+		background-color: #fff;
+		border: 1px solid $line;
+		border-radius: 4px;
+		padding: 1em;
+	}
+	h2{
+		font-size: 1.125em;
+		line-height: 1.5em;
+		margin-bottom: .5em;
+		font-weight: normal;
+		color: $textBlack;
+	}
+
+	.c-default{
+		margin-top: -2.2em;
+		margin-bottom: 0.6em;
+		text-align: right;
+		color: $viOrange;
+	}
+
+	.c-area{
+		font-size: .875em;
+		margin-bottom: .2em;
+		color: $textDarkGray;
+	}
+
+	.c-footer{
+		@include clearfix;
+	}
+
+	.c-mobile{
+		float: left;
+	}
+
+	.c-operate{
+		float: right;
+		color: $textDarkGray;
+		a{
+			color: $textDarkGray;
+		}
+	}
+}
+
+.c-addline{
+	padding: 0 1em;
+	.btn{
+		width: 100%;
+	}
+}
+
+.contactor-form{
+	padding-top: 1px;
+	.form-input-line{
+		padding: 0px;
+		.form-area{
+			@include box-sizing;
+			padding: .71em 1em;
+		}
+		&:before{
+			content: none;
+		}
+		label{
+			color: $textBlack;
+			display: block;
+			font-size: .875em;
+			padding: 1.6em 1.2em .5em 1.2em;
+			background-color: $bgLightGray;
+		}
+		a{
+			padding: .25em 1.5em .25em 0;
+			display: block;
+		}
+	}
+}
+
+.noPhone-line{
+	padding: 1em;
+	text-align: center;
+	position: fixed;
+	bottom: 4em;
+	@include box-sizing;
+	line-height: 1.25em;
+	color: $textDarkGray;
+	left: 0;
+	width: 100%;
+}
+
+.findPassword-line{
+	padding: .71em 1em;
+	text-align: center;
+	color: $textDarkGray;
+}
+

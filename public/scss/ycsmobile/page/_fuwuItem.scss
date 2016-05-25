@@ -1,0 +1,429 @@
+html{
+	font-size:100%;
+}
+h2,h3,ul,p,figure,dd,dt{
+	margin:0;
+	padding:0;
+}
+
+li{
+	list-style:none;
+}
+
+i,em{
+	font-style:normal;
+}
+
+
+@mixin border-radius-icon($color,$borderColor,$bg,$width:auto,$ph:5px,$pw:15px,$fontsize:1em){
+	box-sizing:border-box;
+	color:$color;
+	border:2px solid $borderColor;
+	background-color:$bg;
+	padding:$ph $pw;
+	font-size:$fontsize;
+	border-radius:3px;
+	width:$width;
+}
+
+@mixin padding-space{
+	padding-left:1.875rem;
+	padding-right:1.875rem;
+}
+
+@mixin box-style($position:start){
+	display:-webkit-box;
+	display:-moz-box;
+	-webkit-box-align:$position;
+	-moz-box-align:$position;
+}
+
+@mixin box-position($position:center){
+	-webkit-box-align:$position;
+	-moz-box-align:$position;
+
+}
+@mixin table-layout($position:middle){
+	display:table-cell;
+	vertical-align:$position;
+}
+
+@mixin box-shadow{
+	 -webkit-box-shadow: 0 0px 40px rgba(0,0,0,0.15);
+	 -moz-box-shadow: 0 0px 40px rgba(0,0,0,0.15);
+	 box-shadow: 0 0px 40px rgba(0,0,0,0.15);
+}
+
+
+
+#fuwuItem{
+
+	h2{
+		font-size:1.125em;
+		padding-bottom:0.55em;
+	}
+	>section{
+
+		margin-bottom:1.25em;
+		padding-top:1.875em;
+		border-top : 2px solid $line;
+		border-bottom : 2px solid $line;
+		background-color:white(1);
+
+		&:first-of-type{
+			border-top:none;
+		}
+
+	}
+	.item-des{
+		figure{
+			
+			padding-left:10px;
+			padding-right:10px;
+			border-top:none;
+			@include box-style(center);
+
+			.pic{
+				margin-right:7%;
+				width:43%;
+				img{
+					width:100%;
+				}
+			}
+			dl{
+				width:50%;
+
+			}
+			figcaption{
+				
+				color:$textBlack;
+
+				em{
+					color:$viOrange;
+				}
+				i{
+					color:$textDarkGray;
+				}
+
+				p{
+					font-size:0.875em;
+					&:first-of-type{
+						padding-bottom:10px;
+					}
+				}
+			}
+		}
+
+		.description{
+			position:relative;
+			@include box-shadow;
+			padding:12px 30px 12px;
+			ul{
+				padding-top:12px;
+				
+				li{
+					padding-bottom:6px;
+					list-style:disc inside;
+
+				}
+			}
+		}
+
+		.buy-action{
+
+			@include border-radius-icon(white(1),$viOrange,$viOrange,100%);
+
+			&.disabled{
+
+				@include border-radius-icon(white(1),$www_textLighterGray,$www_textLighterGray,100%);
+				cursor:default;
+			}
+		}
+
+		
+		.toggle{
+			display:none;
+			color:$www_textLightGray;
+			text-align:center;
+
+			&.active{
+				display:block;
+			}
+		}
+
+	}
+
+	.purchase-list{
+		@include padding-space;
+		padding-bottom:36px;
+		
+		
+		.process {
+			display:table;
+			width:100%;
+		}
+		ul{
+			width:100%;
+		}
+
+		li{
+			display:table-cell;
+			vertical-align:top;
+
+			color:$viBlue;
+			text-align:center;
+
+			&:nth-of-type(2n+1){
+
+				width:24%;
+
+			}
+			&:nth-of-type(2n){
+				padding-top:0.3em;
+				width:1%;
+				font-size:1.5em;
+			}
+
+
+			.step{
+				display:inline-block;
+				width:100%;
+				padding:100% 0 0 0;
+				background-repeat :no-repeat;
+				background-position:center top;
+				background-size: auto 100%;
+
+				font-size:0.875em;
+			}
+			
+			.step1{
+				background-image:url("../img/purchase-step1.png");
+			}
+			.step2{
+				background-image:url("../img/purchase-step2.png");
+			}
+			.step3{
+				background-image:url("../img/purchase-step3.png");
+			}
+			.step4{
+				background-image:url("../img/purchase-step4.png");
+			}
+
+			img{
+				max-width:100%;
+				width:auto;
+				height:auto;
+			}
+		}
+
+		footer{
+			padding-top:35px;
+			p{
+				float:left;
+				width:60%;
+				color:$textDarkGray;
+			}
+
+			span{
+				float:right;
+			}
+		}
+	}
+
+	.coupon-info{
+		// @include padding-space;
+		h2{
+			@include padding-space;
+		}
+		ul{
+			width:100%;
+		}
+
+		li{
+			padding:0.875rem 1.875rem;
+			border-bottom:1px solid $line;
+
+			&:last-of-type{
+				border:none;
+			}
+		}
+		p{
+			display:table-cell;
+			vertical-align:middle;
+		}
+		em{
+			display:table;
+			margin-left:1.25rem;
+		}
+		i{
+			@include border-radius-icon($viOrange,$viOrange,white(1),100px);
+		}
+
+	}
+
+	.package-list{
+		h2{
+
+			@include padding-space;
+		}
+
+		li{
+
+			padding:1.1875rem 1.875rem;
+			border-bottom:1px solid $line;
+
+			&:last-of-type{
+				border:none;
+			}
+
+			>div{
+				@include table-layout;
+
+				h3{
+					font-size:1.125rem;
+				}
+
+				&:first-of-type{
+					width:20%;
+
+					>img{
+						max-width:100%;
+					}
+				}	
+				&:nth-of-type(2){
+					height:100%;
+					
+					p{
+						padding-top:0.6875rem;
+						color:$textDarkGray;
+						font-size:0.875rem;
+					}
+				}
+			}
+			
+			i{
+				color:$viOrange;
+				font-size:0.875rem;
+			}
+		}
+	}
+
+	.attention-list{
+		h2{
+
+			@include padding-space;
+		}
+		li{
+			padding:1.08rem 1.875rem;
+			border-bottom:1px solid $line;
+
+			&:last-of-type{
+				padding:0;
+				border:none;
+				color:$viBlue;
+				text-align:center;
+				a{
+					padding:1rem 0.8125rem;
+					display:block;
+				}
+			}
+
+			h3{
+				padding-bottom:0.6875rem;
+				font-size:1.125rem;
+			}
+
+			>div{
+				@include table-layout(top);
+
+				.detail{
+					padding-left:22px;
+				}
+				.ming{
+					@include border-radius-icon(white(1),#87b64a,#87b64a,auto,7px,11px);
+					
+				}
+				.di{
+					@include border-radius-icon(white(1),$viBlue,$viBlue,auto,7px,11px);
+				}
+				.zhan{
+					@include border-radius-icon(white(1),$viOrange,$viOrange,auto,7px,11px)
+				}
+
+				p{
+					color:$textDarkGray;
+					font-size:0.875rem;
+				}
+			}
+		}
+	}
+
+	.misc-list{
+		
+		li{
+			width:100%;
+			
+			>a{
+				@include box-style(center);
+				padding:0.625rem 1.875rem;
+				border-bottom:1px solid $line;
+				color:$www_textLightGray;
+				
+				>div,>em{
+
+				}
+				>div:first-of-type{
+					width:14%;
+				}
+				>div:last-of-type{
+						width:80%;
+					}
+				>em{
+					width:6%;
+				}
+				h3{
+					color:$textBlack;
+				}
+				i{
+					width:1.375rem;
+					height:1.375rem;
+					display:inline-block;
+					background-image:url("../img/common-icon.png");
+					background-position:center top;
+					background-repeat:no-repeat;
+					text-indent:-9999px;
+					background-size:100% auto;
+
+				}
+			}
+
+			&:nth-of-type(2){
+					i{
+						background-position:center -1.375rem;
+					}
+				}
+			&:nth-of-type(3){
+					i{
+						background-position:center -2.75rem;
+					}
+				}
+		}
+	}
+
+	.modal {
+
+		input{
+			width:100%;
+			border : 1px solid $line;
+			background-color:white(1);
+			border-radius:0.25rem;
+			box-sizing:border-box;
+			padding:0.3125rem 0.5rem;
+			line-height:1.625rem;
+		}
+		.tips,.modal-title{
+			text-align:center;
+		}
+	}
+}
+

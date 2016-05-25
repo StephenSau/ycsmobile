@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--=include ../tpl/_commonhead.html -->
+  <title>注意事项_壹财税</title>
+  <meta name="keywords" content="..." />
+  <meta name="description" content="..." />
+  <link href="/public/css/faq.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<header id="globalTopBar" v-cloak>
+	<top-bar>常见问题</top-bar>
+	<div class="city-list-wrapper" v-bind:class="{active: showList}">
+		<city-list :show-list.sync="showList" :selected-city.sync="selectedCity" :ip-city="ipCity"></city-list>
+	</div>
+</header>
+
+<div class="main" id="faqList" v-cloak>
+	<section v-for="faq in list" v-touch:tap="toggleExpand($index)">
+		<div class="intro" :class="{active: !faq.folded}">
+			<div class="title">
+				<p>{{faq.title}}</p>
+			</div>		
+			<div class="arrow">
+				<i v-if="faq.folded" class="fa fa-angle-down" aria-hidden="true"></i>
+				<i v-if="!faq.folded" class="fa fa-angle-up" aria-hidden="true"></i>
+			</div>
+		</div>
+
+		<div class="detail" v-if="!faq.folded">
+			<p v-for="content in faq.content">{{content.text}}</p>
+		</div>
+	</section>
+
+	<back-to-top top="300"></back-to-top>
+</div>
+
+<footer id="footerLogin" class="main">
+	<footer-login></footer-login>
+</footer>
+
+<!--=include ../tpl/_commonfooter.html -->
+<!--=include ../tpl/_commonjs.html -->
+<script src="/public/js/faq.js" type="text/javascript"></script>
+
+</body>
+</html>

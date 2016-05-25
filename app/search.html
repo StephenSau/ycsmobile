@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<script src="/public/js/vendor/modernizr.js"></script>
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<link href="/public/css/ycsglobal.css" rel="stylesheet" type="text/css">
+
+  <title>壹财税</title>
+  <meta name="keywords" content="..." />
+  <meta name="description" content="..." />
+  <link href="/public/css/search.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<div class="main" id="search" v-cloak>
+	<search value="你好吗"></search>
+	<!-- no service line-->
+	<!-- <p class="no-result-line">亲，没有找到适合的服务...</p> -->
+	<!-- no servicer line-->
+	<!-- <p class="no-result-line">亲，没有找到适合的服务商...</p> -->
+	<!-- no expert line-->
+	<!-- <p class="no-result-line">亲，没有找到适合的专家...</p> -->
+	<!-- no news line-->
+	<!-- <p class="no-result-line">亲，没有找到相关的资讯...</p> -->
+	<ul class='result-list'>
+		<!-- service list -->
+		<li class="service-line">
+			<a href="#">
+				<img src="http://fs.ycs.com/admin/serviceicon/201601/7/15511477a2.png" width="100" height="80" />
+				<h2>公司<em>注册</em></h2>
+				<p>约有76家服务商可供挑选</p>
+				<p><span>赠券</span></p>
+				<i class="fa fa-fw fa-angle-right"></i>
+			</a>
+		</li>
+		<li class="service-line">
+			<a href="#">
+				<img src="http://fs.1caishui.com/admin/serviceicon/201510/18/2307179798.jpg" width="100" height="80" />
+				<h2>《守合同重信用》公示活动公示活动</h2>
+				<p>约有76家服务商可供挑选</p>
+				<p><span>赠券</span></p>
+				<i class="fa fa-fw fa-angle-right"></i>
+			</a>
+		</li>
+		<!--- servicer line -->
+		<li class="servicer-line">
+			<a href="#">
+				<h2>广州市潮道<em>财</em>税咨询有限公司</h2>
+				<div>
+					<p><span>广州市白云区云城西路888号1221房</span><b class="distance" v-get-distance v-bind:u-coord="userCoord" addr-text="广州市天河区黄埔大道中路152号22E房之一"><i class="fa fa-spinner fa-pulse fa-3x fa-fw margin-bottom"></i></b></p>
+					<p><i>热门</i><span>4.93</span></p>
+				</div>
+			</a>
+		</li>
+		<li class="servicer-line">
+			<a href="#">
+				<h2>广州市潮道<em>财</em>税咨询有限公司税咨询有限公司税咨询有限公司税咨询有限公司</h2>
+				<div>
+					<p><span>广州市白云区云城西路888号1221房</span><b class="distance" v-get-distance v-bind:u-coord="userCoord" addr-text="广州市海珠区宝岗大道268号1417"><i class="fa fa-spinner fa-pulse fa-3x fa-fw margin-bottom"></i></b></p>
+					<p><i>热门</i><span>4.93</span></p>
+				</div>
+			</a>
+		</li>
+		<li class="servicer-line">
+			<a href="#">
+				<h2>广州市潮道<em>财</em>税咨询有限公司</h2>
+				<div>
+					<p><span>广州市白云区云城西路888号1221房广州市白云区云城西路888号1221房广州市白云区云城西路888号1221房</span><b class="distance" v-get-distance v-bind:u-coord="userCoord" addr-text="广州市越秀区光塔路183号樱花大厦610"><i class="fa fa-spinner fa-pulse fa-3x fa-fw margin-bottom"></i></b></p>
+					<p><span>4.63</span></p>
+				</div>
+			</a>
+		</li>
+
+		<!-- expert line -->
+		<li class="expert-line">
+			<a href="#">
+				<img src="http://fs.ycs.com/propepo/201604/39/19b6d2d98f.png" width="86" height="86" />
+				<h2>刘兴懿<span>12年经验</span></h2>
+				<p class="distance" v-get-distance v-bind:u-coord="userCoord" v-bind:addr-text="'广州市白云区三元里松柏东街13号A401房'"><i class="fa fa-spinner fa-pulse fa-3x fa-fw margin-bottom"></i></p>
+				<p><em>工商</em>、审计、财务会计、税务、许可证、商标审计、财务会计</p>
+			</a>
+		</li>
+
+		<!-- news line -->
+		<li class="news-line">
+			<a href="#">
+				<h2><em>公司</em>法全文2016开公司必知</h2>
+				<p><span>19小时前</span><span><i class="fa fa-fw fa-tag"></i><em>公司</em>注册</span></p>
+			</a>
+		</li>
+
+		<li class="news-line">
+			<a href="#">
+				<h2><em>公司</em>法全文2016开公司必知法全文2016开公司必知法全文2016开公司必知</h2>
+				<p><span>19小时前</span><span><i class="fa fa-fw fa-tag"></i><em>公司</em>注册</span></p>
+			</a>
+		</li>
+
+	</ul>
+	<o-hint v-bind:show.sync="hintShow" v-bind:hint-text="hint"></o-hint>
+</div>
+
+<script src="http://api.map.baidu.com/api?v=2.0&ak=5hASIZKOvTTW0zGOE2z1L2QLvfP3WmNf" type="text/javascript" charset="utf-8"></script>
+
+<script type="text/javascript" src="/public/js/util.js"></script>
+
+<script type="text/javascript" src="/public/js/vendor/require.js"></script>
+
+<script type="text/javascript" src="/public/js/config.js"></script>
+<script src="/public/js/search.js" type="text/javascript"></script>
+</body>
+</html>

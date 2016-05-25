@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--=include ../tpl/_commonhead.html -->
+  <title>壹财税</title>
+  <meta name="keywords" content="..." />
+  <meta name="description" content="..." />
+  <link href="/public/css/index.css" rel="stylesheet" type="text/css">
+</head>
+<body id="homePage">
+
+<header id="globalTopBar" class="loading" v-bind:class="{loading: !hasRendered}">
+	<aside class="spinner"><i class="fa fa-fw fa-lg fa-spin fa-spinner"></i></aside>
+	<top-bar hide-back-btn hide-menu class="light" v-cloak>
+		<a class="select-city" v-touch:tap="showCityList" href="javascript:void(0);">{{ selectedCityName }}<i class="fa fa-fw fa-angle-down"></i></a>
+	</top-bar>
+	<div class="city-list-wrapper" v-bind:class="{active: showList}">
+		<city-list :show-list.sync="showList" :selected-city.sync="selectedCity" :ip-city="ipCity"></city-list>
+	</div>
+
+	<back-to-top></back-to-top>
+</header>
+
+<div class="main">
+	<section id="homeSlider">
+		<a class="placeholder" href="#theFirstSliderLink">
+			<img v-if="!hasRendered" class="placeholder" src="http://fs.ycs.com/idxturn/201602/7/1636a93362.png">
+		</a>
+		<carousel :items="items" :height-ratio="440" :width-ratio="930"><carousel>
+	</section>
+
+	<nav class="quick-nav">
+		<ul>
+			<li>
+				<a href="/app/allsorts.html">
+					<div class="icon service"><i></i></div>
+					<div class="title">找服务</div>
+				</a>
+			</li>
+			<li>
+				<a href="/app/shop.html">
+					<div class="icon shop"><i></i></div>
+					<div class="title">找服务商</div>
+				</a>
+			</li>
+			<li>
+				<a href="/app/zixunhome.html">
+					<div class="icon news"><i></i></div>
+					<div class="title">资讯</div>
+				</a>
+			</li>
+			<li>
+				<a href="/app/user.html">
+					<div class="icon user"><i></i></div>
+					<div class="title">我的</div>
+				</a>
+			</li>
+		</ul>
+	</nav>
+
+	<section class="hot-services">
+		<div class="heading">
+			<h2 class="title">热门服务</h2>
+			<a class="more" href="/app/allsorts.html">查看所有服务<i class="fa fa-fw fa-angle-right"></i></a>
+		</div>
+
+		<ul class="service-list">
+			<li class="item">
+				<a href="#">
+					<img class="cover" src="http://fs.1caishui.com/admin/serviceicon/201601/22/194e4612d1.png">
+					<div class="meta">
+						<h3 class="item-name">公司注册</h3>
+						<div class="sellpoint">多项优惠套餐</div>
+					</div>
+				</a>
+			</li>
+
+			<li class="item">
+				<a href="#">
+					<img class="cover" src="http://fs.1caishui.com/admin/serviceicon/201601/22/1900b9d0d0.png">
+					<div class="meta">
+						<h3 class="item-name">代理记账</h3>
+						<div class="sellpoint">新用户劲减588</div>
+					</div>
+				</a>
+			</li>
+
+			<li class="item">
+				<a href="#">
+					<img class="cover" src="http://fs.1caishui.com/admin/serviceicon/201601/22/19404ce18f.png">
+					<div class="meta">
+						<h3 class="item-name">商标注册</h3>
+						<div class="sellpoint">审核不过全额退款</div>
+					</div>
+				</a>
+			</li>
+
+			<li class="item">
+				<a href="#">
+					<img class="cover" src="http://fs.1caishui.com/admin/serviceicon/201601/22/198fbd8701.png">
+					<div class="meta">
+						<h3 class="item-name">餐饮服务三大证照</h3>
+						<div class="sellpoint">入驻外卖平台必备</div>
+					</div>
+				</a>
+			</li>
+		</ul>
+
+	</section>
+
+	<section class="hot-experts">
+		<div class="heading">
+			<h2 class="title">推荐专家</h2>
+			<a class="more" href="/app/expert.html">查看所有专家<i class="fa fa-fw fa-angle-right"></i></a>
+		</div>
+
+		<ul id="hotExpertsList" class="expert-list" v-cloak>
+			<a href="#">
+				<li class="item" v-for="expert in experts">
+					<div class="image">
+						<lazy-load :i-src="expert.image"></lazy-load>
+					</div>
+					<div class="info">
+						<div class="meta">
+							<h3 class="name">{{ expert.name }}<small class="experience">{{ expert.experience}}年经验</small></h3>
+							<span class="distance" v-get-distance v-bind:u-coord="userCoord" v-bind:addr-text="expert.address"></span>
+						</div>
+						<div class="tags">{{ expert.tags }}</div> 
+					</div>
+				</li>
+			</a>
+		</ul>
+
+	</section>
+
+</div>
+
+<footer id="footerLogin" class="main">
+	<footer-login></footer-login>
+</footer>
+
+<!--=include ../tpl/_commonfooter.html -->
+
+<!--=include ../tpl/_commonjs.html -->
+<script src="/public/js/index.js" type="text/javascript"></script>
+</body>
+</html>

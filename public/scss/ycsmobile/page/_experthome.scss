@@ -1,0 +1,334 @@
+#position-wrapper{
+	display: none;
+
+  &.show{
+		background-color: black(0.5);
+		position: fixed;
+		height: 100%;
+		width: 100%;
+		z-index: 4;
+		display: -webkit-flex !important;
+	  display: flex !important;
+	  -webkit-align-items: center;
+	  align-items: center;
+	  -webkit-justify-content: center;
+	  justify-content: center;
+  }
+
+  .inner{
+		max-width: 1024px;
+		margin: 0 auto;
+  	width: calc(100% - 32px);
+  	.part{
+			background-color: white;
+			border-radius: 6px;
+			padding-bottom: 4px;
+
+			&.cancel{
+				margin-top: 14px;
+				padding-top: 4px;
+
+				.btn-wrapper{
+					button{
+						border-top: 0;
+					}
+				}
+			}
+
+
+			.info{
+				font-size: 16px;
+				color: $textLightGray;
+				padding: 21px 16px;
+
+				p{
+					margin: 0;
+				}
+
+				.address{
+					padding-top: 14px;
+					padding-bottom: 4px;
+					color: $textBlack;
+				}
+			}
+
+			.redirect{
+				padding: 25px 16px;
+				p{
+					margin: 0;
+					margin-bottom: 20px;
+					font-size: 18px;
+					color: $textBlack;
+				}
+
+				input{
+					width: calc(100% - 22px);
+					padding: 10px;
+					border: 1px solid $line;
+					border-radius: 4px;
+					color: $textDarkGray;
+					font-size: 16px;
+				}
+			}
+
+			.btn-wrapper{
+				button{
+					padding: 16px 0;
+					width: 100%;
+					border: none;
+					background-color: white;
+					border-top: 1px solid $line;
+					color: $viBlue;
+				}
+
+				&.cancel{
+					margin-top: 14px;
+				}
+			}
+		}
+  }
+}
+
+.topBar {
+	a.select-city {
+		display: block;
+
+		i {
+			&,
+			* {
+				color: white;
+			}
+
+			position: relative;
+			top: 2px;
+			font-size: 20px;
+		}
+	}
+}
+
+.city-list-wrapper {
+	@include cityListWrapper;
+}
+
+#expertList{
+	background-color: white;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+	position: relative;
+
+	.city-list-container {
+		display: none;
+
+		&.active{
+			display: block;
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			z-index: 1005;
+		}
+	}
+
+	.filter-wrapper{
+		width: 100%;
+		display: table;
+		background-color: $bgLightGray;
+		padding: 9px 0;
+		border-bottom: 1px solid $line;
+
+		&.active{
+			background-color: white;
+
+			.field,
+			.distance{
+				p{
+					&.active{
+						color: $viBlue;
+					}
+				}
+			}
+		}
+
+		.field,
+		.distance,
+		.search{
+			display: table-cell;
+			padding: 0 15px;
+
+			i{
+				color: $textLightGray;
+			}
+		}
+
+		.field,
+		.distance{
+			width: 45%;
+			border-right: 1px solid $line;
+			position: relative;
+
+			p{
+				font-size: 16px;
+				color: $textBlack;
+				margin: 0;
+
+				&.active{
+					color: $viBlue;
+				}
+			}
+
+			i{
+				position: absolute;
+				right: 16px;
+				top: 2px;
+			}
+		}
+
+		.search{
+			width: 10%;
+			text-align: center;
+		}
+	}
+
+	.filter-list{
+		background-color: black(0.5);
+		position: absolute;
+		height: 100%;
+		width: 100%;
+		z-index: 3;
+		display: block;
+
+		.wrapper{
+			position: relative;
+			width: 100%;
+			height: 100%;
+
+			.inner{
+				width: 100%;
+				position: absolute;
+				top: 0;
+				z-index: 10;
+				background-color: white;
+
+				.field{
+					padding: 9px 16px;
+					border-bottom: 1px solid $line;
+					position: relative;
+
+					p{
+						margin: 0;
+						color: $textBlack;
+						font-size: 16px;
+
+						&.active{
+							color: $viBlue;
+						}
+					}
+
+					i{
+						position: absolute;
+						top: 11px;
+						right: 16px;
+						color: $viBlueLight;
+					}
+				}
+			}
+		}
+
+		
+	}
+
+	.location-wrapper{
+		background-color: $bgLightGray;
+		padding: 14px 15px;
+		position: relative;
+		border-bottom: 1px solid $line;
+
+		.address{
+			font-size: 14px;
+			color: $textDarkGray;
+		}
+
+		.current{
+			i{
+				position: absolute;
+				top: 16px;
+				right: 16px;
+				color: $textLightGray;
+			}
+		}
+	}
+
+	.content-wrapper{
+		section{
+			padding: 17px 16px;
+			border-bottom: 1px solid $line;
+
+			&:last-child{
+				border-bottom: none;
+			}
+			
+			.head,
+			.info{
+				display: inline-block;
+				margin-right: -6px;
+				vertical-align: middle;
+			}
+
+			.head{
+				width: 86px;
+				height: 86px;
+				background-position: 50% 50%;
+				background-size: cover;
+				background-repeat: no-repeat;
+				margin-right: 16px;
+			}
+
+			.info{
+				width: calc(100% - 108px);
+				.detail{
+					margin-bottom: 13px;
+					width: 100%;
+					line-height: 14px;
+
+					.name,
+					.year{
+						float: left;
+					}
+
+					.distance{
+						float: right;
+					}
+
+					.name{
+						font-size: 18px;
+						line-height: 18px;
+						color: $textBlack;
+						margin-right: 13px;
+					}
+
+					.year{
+						font-size: 12px;
+						line-height: 12px;
+						color: $textLightGray;
+						padding-top: 3px;
+					}
+
+					.distance{
+						text-align: right;
+						line-height: 12px;
+						font-size: 12px;
+						padding-top: 3px;
+						color: $textLightGray;
+					}
+				}
+
+				.field{
+					font-size: 14px;
+					color: $textDarkGray;
+				}
+			}
+		}
+	}
+}

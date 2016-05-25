@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--=include ../tpl/_commonhead.html -->
+  <title>壹财税</title>
+  <meta name="keywords" content="..." />
+  <meta name="description" content="..." />
+  <link href="/public/css/order.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<header id="globalTopBar">
+	<top-bar v-cloak>订单详情</top-bar>
+</header>
+
+<div class="main order-box" id="order" v-cloak>
+	<section>
+		<h1>订单详情</h1>
+		<ul>
+			<li>•订单号：201604154551</li>
+			<li>•下单时间：2016-04-15 09:12:14</li>
+			<li>•联系人：手机用户_6041405205</li>
+			<li>•手机好：13912345678</li>
+			<li>•服务商：广州市潮道财税咨询有限公司</li>
+			<li>•应付金额：￥1288</li>
+		</ul>
+	</section>
+	<section>
+		<h1>包含服务内容</h1>
+		<ul>
+			<li>•有限责任公司注册 X1次</li>
+			<li>•小规模纳税人查账征收代理记账 X3月</li>
+			<li>•银行开户 X1次</li>
+			<li>•社会保险登记证新办 X1次</li>
+			<li>•住房公积金登记证新办 X1次</li>
+		</ul>
+	</section>
+	<section>
+		<h1>订单跟踪</h1>
+		<ul>
+			<li>
+				<span>2016-04-15 09:12:14</span>
+				您提交了订单，请等待服务商确认	
+			</li>
+			<li>
+				<span>2016-04-15 09:12:14</span>
+				您提交了订单，请等待服务商确认
+			</li>
+		</ul>
+	</section>
+	<p>
+		<a href="#" class="btn btn-orange">付款</a>
+	</p>
+	<o-hint v-bind:show.sync="hintShow" v-bind:hint-text="hint"></o-hint>
+</div>
+
+<footer class="footer" id="footer">
+	<foot :data-refresh="refreshFlag"></foot>
+</footer>
+<!--=include ../tpl/_commonjs.html -->
+<script src="/public/js/order.js" type="text/javascript"></script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+#backToTop {
+	position: fixed;
+	display: inline-block;
+	height: 40px;
+	width: 40px;
+	right: 20px;
+	bottom: 5em;
+	z-index: 1000;
+	border-radius: 50%;
+	background: black(0.5);
+	text-align: center;
+	cursor: pointer;
+	opacity: 0;
+
+	-webkit-transition: opacity .3s;
+	transition: opacity .3s;
+
+	&.show {
+		opacity: 1;
+	}
+
+	&:active,
+	&:focus{
+		background: black(0.8);
+	}
+
+	> i {
+		color: #fff;
+		margin: 1px 0 0 0;
+		font-size: 2.2em;
+	}
+}

@@ -1,0 +1,18 @@
+.overlay-hint{
+	position: fixed;
+	text-align: center;
+	top: 40vh;
+	left: 0;
+	right: 0;
+
+	.hint-body {
+		display: inline-block;
+		max-width: 90%;
+		padding: 1em 1.5em 1.2em 1.5em;
+		background: black(0.85);
+		color: #fff;
+		font-size: 18px;
+		border-radius: 5px;
+		box-shadow: 0 2px 10px black(0.35);
+	}
+}

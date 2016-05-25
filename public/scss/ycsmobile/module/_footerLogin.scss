@@ -1,0 +1,78 @@
+@import "../common/mixin";
+
+.footer-with-login{
+	padding: 20px 15px 10px 15px;
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+	align-items: center;
+
+	.left{
+		.loading {
+			color: $textLightGray;
+		}
+
+		.is-guest{
+			width: 164px;
+		}
+
+		.btn{
+			margin-left: 10px;
+
+			&:first-of-type{
+				margin-left: 0;
+			}
+		}
+
+		.logged-in {
+			align-self: center;
+			vertical-align: middle;
+
+			.username{
+				color: $textDarkGray;
+				padding-right: 1em;
+			}
+		}
+	}
+
+	.right {
+		flex: 1 1 auto;
+		text-align: right;
+
+		.btn-city{
+			max-width: 100%;	
+			overflow: hidden;
+
+			padding-right: 0.2em;
+
+			.inner {
+				display: flex;
+				flex-flow: row nowrap;
+				justify-content: space-between;	
+				align-items: center;
+				overflow: hidden;
+			}
+
+			.city-name{
+				@include ellipsis;
+
+				flex: 1 1 auto;
+				text-align: left;
+				color: $textBlack;
+
+				width: 120px;
+			}
+		}
+	}
+
+
+	// logout confirm dialog
+
+	.modal-dialog {
+		margin-top: 20vh;
+
+		.modal-extend {
+			display: none;
+		}
+	}
+}

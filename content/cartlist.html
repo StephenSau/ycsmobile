@@ -1,0 +1,124 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<!--=include ../tpl/_commonhead.html -->
+  <title>结算页_壹财税</title>
+  <meta charset="utf-8" />
+  <meta name="keywords" content="..." />
+  <meta name="description" content="..." />
+  <link href="/public/css/cartlist.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<!--Global topbar here-->
+<header id="globalTopBar" v-cloak>
+	<top-bar>结算页_壹财税</top-bar>
+</header>
+
+<section id="cartlist" class="main" v-cloak>
+
+	<!--import the nav-->
+	<ol class="step">
+		<li>1.确认服务</li>
+		<li>2.选服务商</li>
+		<li class="active">3.提交订单</li>
+		<li>4.在线支付</li>
+	</ol>
+	<section class="list">
+		<ul>
+			<li class="clearfix">大众创业优先A餐<span class="pull-right">&yen;{{totalPrice}}</span></li>
+			<li class="clearfix">服务商<span class="pull-right">潮道财税</span></li>
+			<li class="clearfix" v-touch:tap="couponShow">自动享受优惠<span class="pull-right coupon">{{radioPicked}}<i class="fa fa-icon fa-angle-right arrow-direction"></i></span></li>
+			<li class="clearfix">为您节省<span class="pull-right amount">-&yen;{{reducePrice}}</span></li>
+		</ul>
+
+		<div class="mask clearfix">订单备注<span class="pull-right mask-tip"><em>无订单备注</em><i class="fa fa-icon fa-angle-right arrow-direction"></i></span></div>
+
+	</section>	
+	<section class="log-form">
+		
+		<validator name="oneValidation">
+			<form novalidate class="login" v-show="!isLogin">
+				
+				<dl>
+					<dt>免登录直接购买</dt>
+					<dd class="clearfix" v-if="mobile =  forms.mobileForm.fields.mobile">
+						<input :id='mobile.id' :type="mobile.type" :name="mobile.name" :placeholder="mobile.placeholder" v-model="mobile.value"
+						:maxLength="mobile.maxlength" :autocomplete="mobile.autocomplete" field = "mobile" v-validate="{required:true,numeric:true,minlength:11}" autofocus / >
+						<input type="button" v-if="mobile.hasButton" value="{{mobile.onCount ? (mobile.count + '秒'):'发送验证码'}}" class="pull-right btn" :disabled="$oneValidation.mobile.invalid || mobile.onCount" :class="{'btn-green':$oneValidation.mobile.valid}" v-touch:tap="showCodeBox(mobile)" />
+					</dd>
+
+					<dd class="clearfix" v-if="code = forms.mobileForm.fields.code">
+						<input :id='code.id' :type="code.type" :name="code.name" :placeholder="code.placeholder" v-model="code.value"
+						:maxLength="code.maxlength" :autocomplete="code.autocomplete" field = "code" v-validate="{required : true,minlength : 6,numeric : true}" / >
+					</dd>
+
+					<dd>
+						我已有壹财税账号，去 <a href="/app/login.html">登录</a>
+					</dd>
+				</dl>
+			</form>
+		</validator>
+		<!-- <pre>{{$oneValidation | json}}</pre> -->
+
+		<form novalidate class="logout" v-show="isLogin">
+			<dl>
+				<dt>您已绑定的手机号码</dt>
+				<dd class="clearfix">{{username}}<span class="pull-right">绑定新号码<i class="fa fa-icon fa-angle-right arrow-direction"></i></span></dd>
+				<dd><a href="javascript:void(0);" v-touch:tap="_logout">退出登录</a></dd>
+			</ul>
+		</form>
+
+	</section>
+	<!--fixedbar is fixed here for purchasing-->
+	<section class="fixed-bar">
+		<div class="next-step">
+			<div class="amount">
+				<p>实付款：￥{{getAmount}}</p>
+				<p>已优惠￥{{reducePrice}}</p>
+			</div>
+			<button class="btn" :class="{'btn-orange': $oneValidation.valid}" :disabled="$oneValidation.invalid && !isLogin" v-touch:tap="loginByMobile">确认下单</button>
+		</div>
+	</section>
+
+	<!--code popovers -->
+	<code-box url="/user/sendAuthCode4Login.htm" :show.sync="modals.imgCode"></code-box>
+	<back-to-top></back-to-top>
+
+	<!--import modal-->
+	<modal :show.sync="modalShow" v-cloak>
+		<div slot="modal-header" class="modal=header"></div>
+		<div slot="modal-body" class="modal-body">
+			<!--phone warning tips-->
+			<div class="phone-tips" v-if="phoneTipShow">
+				<h2>{{warnHtml}}</h2>
+				<p><span class="btn btn-block" v-touch:tap="confirmClose">确定</span></p>
+			</div>
+			<!--radios check here start going-->
+			<div class="radio-check" v-else>
+				<dl class="checkbox-check">
+					<dd :class="{'active':item.isActive}" v-for="item in radios" v-touch:tap="checkRadioItem($index)">
+						<div class="des">
+							<p>{{item.title}}</p>
+							<p>可节省 &yen;{{item.amount}}</p>
+						</div>
+						<span class="fa fa-fw" :class="{'fa-check' : item.isActive}"></span>
+					</dd>
+				</dl>
+				<p><span>只能选择享受其中一项优惠</span><i class="btn btn-green" v-touch:tap="confirmRadio">确定</i></p>
+			</div>
+		</div>
+		<div slot="modal-footer" class="modal-footer"></div>
+	</modal>
+
+	<!--import the hint for warning the message-->
+	<o-hint :show.sync="hintShow" v-bind:hint-text="hint"></o-hint>
+</section>
+
+
+
+<!--=include ../tpl/_commonjs.html -->
+<script src="/public/js/cartlist.js" type="text/javascript"></script>
+
+</body>
+</html>
+

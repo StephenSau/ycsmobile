@@ -1,0 +1,168 @@
+p{
+	padding: 0;
+	margin: 0;
+}
+
+.step {
+	width: 100%;
+	@include clearfix;
+	li{
+		float: left;
+		width: 25%;
+		font-size: .875em;
+		position: relative;
+		text-align: center;
+		height: 40px;
+		line-height: 40px;
+		text-indent: 1em;
+		background-color: $bgLightGray;
+		color: $textLightGray;
+		&:nth-child(1){
+			z-index: 4;
+		}
+		&:nth-child(2){
+			z-index: 3;
+		}
+		&:nth-child(3){
+			z-index: 2;
+		}
+		&:nth-child(4){
+			z-index: 1;
+			&:after {
+				content: none;
+			}
+		}
+		&:after{
+			content: " ";
+			position: absolute;
+			width: 16px;
+			height: 40px;
+			display: block;
+			top: 0;
+			right: -16px;
+			background-image: url('../img/step-angle.png');
+			background-size: 16px 80px;
+			background-position: 0 0;
+		}
+		&.active{
+			color: #fff;
+			background-color: #0eb58c;
+			&:after{
+				background-position: 0 -40px;
+			}
+		}
+	}
+}
+
+.box{
+	background-color: #fff;
+	border-top: 1px solid $line;
+	border-bottom: 1px solid $line;
+	margin-bottom: 1em;
+}
+
+.total-box{
+	border-top: none;
+	padding-left: 1em;
+	p{
+		
+		border-top: 1px solid $line;
+		padding: .71em 0;
+		color: $textDarkGray;
+		&:first-child{
+			border-top: none;
+			@include clearfix;
+			padding-right: 1em;
+			span{
+				color: $textBlack;
+				float: left;
+			}
+			em{
+				font-style: normal;
+				color: $viOrange;
+				float: right;
+			}
+		}
+	}
+}
+
+.thirdpay-box{
+	p{
+		border-bottom: 1px solid $line;
+		@include clearfix;
+		padding: .71em 1em;
+		span{
+			color: $textBlack;
+			float: left;
+		}
+		em{
+			font-style: normal;
+			color: $viOrange;
+			float: right;
+		}
+	}
+	ul{
+		padding-left: 1em;
+		li{
+			@include clearfix;
+			border-top: 1px solid $line;
+			padding: .75em 1em .75em 0;
+			&:first-child{
+				border-top: none;
+			}
+			&.active{
+				i{
+					display: inline;
+				}
+			}
+		}
+		img{
+			vertical-align: middle;
+			margin-right: .5em;
+		}
+		i{
+			display: none;
+			font-size: 1.875em;
+			float: right;
+			color: $viBlueLight;
+		}
+	}
+}
+
+.bankOnline-box, .bankOutLine-box{
+	p{
+		padding: .71em 1em;
+		
+		a{
+			@include clearfix;
+			display: block;
+		}
+		span{
+			color: $textBlack;
+			float: left;
+			line-height: 2em;
+		}
+		i{
+			font-size: 2em;
+			color: $textLightGray;
+			float: right;
+		}
+	}
+}
+
+.btn-line{
+	padding: 0 1em;
+	margin-bottom: 1em;
+	.btn{
+		@include box-sizing;
+		width: 100%;
+	}
+}
+
+.ps-line{
+	text-align: center;
+	a{
+		color: $viBlue;
+		font-size: .875em;
+	}
+}

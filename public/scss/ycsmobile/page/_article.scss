@@ -1,0 +1,121 @@
+.city-list-wrapper {
+	@include cityListWrapper;
+}
+
+#articleDetail{
+	background-color: white;
+	padding: 30px 0;
+
+	.title{
+		margin-bottom: 30px;
+		padding: 0 16px;
+		h3{
+			margin: 0;
+			font-size: 22px;
+			color: $textBlack;
+		}
+	}
+
+	.released{
+		margin-bottom: 18px;
+		padding: 0 16px;
+
+		p,
+		a{
+			margin: 0;
+			font-size: 14px;
+			line-height: 14px;
+		}
+
+		p{
+			color: $textDarkGray;
+		}
+
+		a{
+			border-bottom: 1px solid $viBlue;
+			color: $viBlue;
+		}
+	}
+
+	#content-wrapper{
+		padding: 0 16px;
+
+		p{
+			margin: 0;
+			margin-bottom: 30px;
+
+			&:last-child{
+				margin-bottom: 40px;
+			}
+
+			img{
+				width: 100%;
+				max-width: 1146px;
+			}
+		}
+	}
+
+	.origin{
+		padding: 0 16px;
+		p,
+		a{
+			margin: 0;
+			font-size: 14px;
+			line-height: 14px;
+		}
+
+		p{
+			color: $textDarkGray;
+		}
+
+		a{
+			color: $viBlue;
+			border-bottom: 1px solid $viBlue;
+		}
+
+		.region{
+			margin-right: 10px;
+		}
+	}
+}
+
+.login-wrapper{
+	max-width: 1024px;
+	margin: 0 auto;
+	font-size: 18px;
+	padding: 20px 15px 0 15px;
+
+	.btn{
+		border-radius: 4px;
+	}
+
+	.login{
+		background-color: $viBlue;
+		color: white;
+		padding: 8px 30px;
+		border: 1px solid $viBlue;
+		margin-right: 10px;
+	}
+
+	.register,
+	.current-city{
+		border: 1px solid $line;
+		background-color: white;
+	}
+
+	.register{
+		color: $textDarkGray;
+		padding: 8px 30px;
+	}
+
+	.current-city{
+		color: $textBlack;
+		font-size: 16px;
+		padding: 10px 14px;
+		text-align: center;
+
+		i{
+			color: $textDarkGray;
+		}
+	}
+}

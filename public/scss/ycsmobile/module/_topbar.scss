@@ -1,0 +1,110 @@
+@import '../common/var';
+
+.topBar {
+	background: $viBlue;
+	box-sizing: border-box;
+	padding: 0.5em 0 0 0;
+	text-align: center;
+	height: 2.5em;
+
+	&,
+	* {
+		color: #fff;
+	}
+
+	&.light {
+		background: $bgLighterGray;
+
+		&,
+		* {
+			color: $textBlack;
+		}
+	}
+
+	> nav {
+		position: relative;
+
+		> a {
+			&.active{
+				background-color: $viBlueDark;
+			}
+		}
+
+
+		.btn-back,
+		.btn-menu {
+			position: absolute;
+			top: -0.5em;
+			height: 2.5em;
+			padding: 0 0.5em;
+			background: white(0);
+
+			> i {
+				position: relative;
+			}
+		}
+
+		.btn-back {
+			left: 0;
+
+			> i {
+				top: 6px;
+				font-size: 28px;
+
+				&:before {
+					position: relative;
+					left: -10px;
+				}
+			}
+		}
+
+		.btn-menu {
+			right: 0;
+
+			> i {
+				top: 9px;
+				font-size: 22px;
+			}
+		}
+	}
+
+	.dropdown{
+		position: absolute;
+		right: 0;
+		top: 2em;
+		background-color: $viBlueDark;
+		z-index: 1000;
+
+		ul {
+			padding: 0;
+			margin: 0;
+			list-style: none;
+
+			li {
+				padding: 0;
+				margin: 0;
+
+				border-top: 1px solid black(0.15);
+
+				&:first-of-type{
+					border-top: 0;
+				}
+
+				> a {
+					display: inline-block;
+					padding: 0.5em; 
+					text-align: left;
+					width: 5em;
+
+					&,
+					&:active,
+					&:focus,
+					&:hover {
+						color: #fff;
+					}
+				}
+			}
+		}
+	}
+
+}

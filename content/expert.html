@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--=include ../tpl/_commonhead.html -->
+  <title>专家_壹财税</title>
+  <meta name="keywords" content="..." />
+  <meta name="description" content="..." />
+  <link href="/public/css/expert.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<header id="globalTopBar" v-cloak>
+	<top-bar>壹财税专家</top-bar>
+	<div class="city-list-wrapper" v-bind:class="{active: showList}">
+		<city-list :show-list.sync="showList" :selected-city.sync="selectedCity" :ip-city="ipCity"></city-list>
+	</div>
+</header>
+
+<div class="main" id="expertDetail">
+	<section class="info">
+		<div class="head" style="background-image: url(http://fs.ycs.com/propepo/201601/39/166d65da40.png)"></div>
+		<div class="detail">
+			<div class="grid first">
+				<div class="name">吳邪花</div>
+				<div class="position">总经理</div>
+			</div>
+			<div class="grid second">
+				<div class="years">12年经验</div>
+				<div class="grade">高级专家</div>
+			</div>
+			<div class="grid third">
+				<div class="field">工商,财务会计,审计,税务,法律,资产评估,许可证,商标专利,人力资源</div>
+			</div>
+		</div>
+		<div class="shadow"></div>
+	</section>
+
+	<section class="history">
+		<button type="button" class="btn btn-green" v-touch:tap="showDialBox('13800138000')">找TA咨询</button>
+
+		<dial-box :show.sync="dial"></dial-box>
+		<div id="expandable" v-cloak>
+			<div class="folded-content" :class="{unfold: !folded}">
+				<p>汕头大学财务管理毕业，后进入中国移动。08年考取中级会计师后开始创办潮道财税（前身为聚得财税），超过10年的工商财税从业经验，擅长工商注册、税务筹划、财务审计，对中小企业的设立、税务财务疑难杂症有丰富的实战经验，同时拥有深度的同业及政府关系，能及时有效的为客户处理工商税务危机，为客户保驾护航。</p>
+				<button v-if="folded" class="btn-expand btn btn-block" v-touch:tap="toggleExpand(true)">展开 <i class="fa fa-fw fa-lg fa-angle-down"></i></button>
+				<button v-if="!folded" class="btn-fold btn btn-block" v-touch:tap="toggleExpand(false)">收起 <i class="fa fa-fw fa-angle-up fa-lg"></i></button>
+			</div>
+		</div>
+
+	</section>
+
+	<section class="belong">
+		<h3>所属公司</h3>
+		<div class="title">广州市超导财税咨询有限公司</div>
+		<div class="address">广州市白云区云城西路888号12312</div>
+		<div class="situation">
+			<div class="recommend">推荐</div>
+			<div class="hot">热门</div>
+			<div class="score">4.96</div>
+		</div>
+	</section>
+
+</div>
+
+<footer id="footerLogin" class="main">
+	<footer-login></footer-login>
+</footer>
+
+<!--=include ../tpl/_commonfooter.html -->
+<!--=include ../tpl/_commonjs.html -->
+<script src="/public/js/expert.js" type="text/javascript"></script>
+
+</body>
+</html>

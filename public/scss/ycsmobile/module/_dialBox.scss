@@ -1,0 +1,33 @@
+
+.mobile-line{
+	width: 100%;
+	margin: 0;
+	.mobile-text{
+		width: 100%;
+		border: 1px solid $line;
+		background-color: #fff;
+		border-radius: 4px;
+		@include box-sizing;
+		padding: 5px .5em;
+		line-height: 26px;
+	}
+
+	.form-error-icon{
+		font-size: 1.25em;
+		color: #f06d54;
+		margin-left: -1.5em;
+	}
+}
+
+.text-line {
+	padding: .71em 0;
+	text-align: center;
+}
+
+.dial-button-group{
+	button[disabled] {
+		background-color: #ddd;
+		color: $textDarkGray;
+		border-color: #ddd; 
+	}
+}

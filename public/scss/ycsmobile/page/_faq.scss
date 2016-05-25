@@ -1,0 +1,110 @@
+.city-list-wrapper {
+	@include cityListWrapper;
+}
+
+
+section{
+	border-bottom: 1px solid $line;
+	position: relative;
+	background-color: white;
+
+	&:last-child{
+		border-bottom: 0;
+	}
+
+	.intro{
+		display: table;
+		width: calc(100% - 32px);
+		padding: 18px 16px;
+
+		&.active{
+			.title{
+				p{
+					color: $viBlue;
+				}
+			}
+
+			.arrow{
+				i{
+					color: $viBlue;
+				}
+			}
+		}
+
+		.title,
+		.arrow{
+			display: table-cell;
+			vertical-align: middle;
+		}
+
+		.title{
+			width: calc(100% - 43px);	
+			p{
+				font-size: 18px;
+				color: $textBlack;
+				margin: 0;
+			}
+		}
+
+		.arrow{
+			width: 20px;
+			padding-left: 23px;
+
+			i{
+				font-size: 32px;
+				color: $textLightGray;
+			}
+		}
+	}
+
+	.detail{
+		background-color: $bgLightGray;
+		padding: 25px 16px;
+		p{
+			margin: 0;
+			color: $textBlack;
+			font-size: 16px;
+		}
+	}
+}
+
+.login-wrapper{
+	max-width: 1024px;
+	margin: 0 auto;
+	font-size: 18px;
+	padding: 20px 16px 0 16px;
+
+	.btn{
+		border-radius: 4px;
+	}
+
+	.login{
+		background-color: $viBlue;
+		color: white;
+		padding: 8px 30px;
+		border: 1px solid $viBlue;
+		margin-right: 10px;
+	}
+
+	.register,
+	.current-city{
+		border: 1px solid $line;
+		background-color: white;
+	}
+
+	.register{
+		color: $textDarkGray;
+		padding: 8px 30px;
+	}
+
+	.current-city{
+		color: $textBlack;
+		font-size: 16px;
+		padding: 10px 14px;
+		text-align: center;
+
+		i{
+			color: $textDarkGray;
+		}
+	}
+}

@@ -1,0 +1,585 @@
+#contentWrapper{
+	#header{
+		position: absolute;
+		top: 40px;
+		left: 0;
+		width: 100%;
+		z-index: 1;
+		#navTab{
+			list-style:none;
+			width: 100%;
+			padding: 0;
+			margin: 0;
+			background-color: white;
+
+			li{
+				width: 33.333333%;
+				text-align: center;
+				padding: 14px 0;
+				border-bottom: 2px solid $line;
+				font-size: 16px;
+				color: $textBlack;
+
+				&.active{
+					border-bottom: 2px solid $viBlue;
+					color: $viBlue;
+					font-weight: bold;
+					padding-top: 12px;
+					padding-bottom: 15px;
+				}
+			}
+		}
+	}
+
+	.service{
+		#wrapper{
+			position: absolute;
+			z-index: 1;
+			top: 93px;
+			bottom: 0;
+			left: 85px;
+			right: 0;
+			width: calc(100% - 85px);
+			overflow: hidden;
+
+			#scroller{
+				position: absolute;
+				z-index: 3;
+				-webkit-tap-highlight-color: rgba(0,0,0,0);
+				width: 100%;
+				-webkit-transform: translateZ(0);
+				-moz-transform: translateZ(0);
+				-ms-transform: translateZ(0);
+				-o-transform: translateZ(0);
+				transform: translateZ(0);
+				-webkit-touch-callout: none;
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
+				user-select: none;
+				-webkit-text-size-adjust: none;
+				-moz-text-size-adjust: none;
+				-ms-text-size-adjust: none;
+				-o-text-size-adjust: none;
+				text-size-adjust: none;
+
+        li{
+        	background-color: white;
+
+        	&:last-child{
+        		.column{
+        			&:last-child{
+        				border-bottom: 0;
+        			}
+        		}
+        	}
+        }
+
+        p{
+					margin: 0;
+					font-size: 14px;
+					line-height: 14px;
+					padding: 9px 13px;
+					color: $textDarkGray;
+					background-color: $bgLightGray;
+				}
+
+        .column{
+					border-bottom:1px solid $line;
+					padding: 10px 0;
+					display: table;
+					width: 100%;
+
+					.grid{
+						display: table-cell;
+						vertical-align: middle;
+
+						&.image{
+							padding: 0 10px;
+							width: 100px;
+							height: 80px;
+							background-position: 50% 50%;
+							background-size: contain;
+							background-repeat: no-repeat;
+						}
+
+						&.info{
+							.title{
+								font-size: 18px;
+								line-height: 18px;
+								margin-bottom: 13px;
+
+								&.only{
+									margin-bottom: 0;
+								}
+							}
+
+							.extra{
+								float: left;
+								border: 1px solid $viOrange;
+								border-radius: 2px;
+								color: $viOrange;
+								padding: 4px 5px;
+								line-height: 12px;
+								font-size: 12px;
+
+								&.both{
+									margin-right: 4px;
+								}
+							}
+						}
+
+						&.more{
+							padding-right: 14px;
+							text-align: right;
+
+							i{
+								font-size: 32px;
+								line-height: 32px;
+								color: $textLightGray;
+							}
+						}
+					}
+				}
+			}
+		}
+
+
+		#nav-wrapper{
+			position: absolute;
+			z-index: 1;
+			top: 93px;
+			bottom: 0;
+			left: 0;
+			right: calc(100% - 85px);
+			width: 84px;
+			overflow-y: scroll;
+			-webkit-overflow-scrolling: touch;
+			border-right: 1px solid $line;
+
+			#nav{
+				position: absolute;
+				z-index: 3;
+				top: 0;
+				background-color: $bgLightGray;
+				text-align: center;
+				width: 100%;
+
+				.title{
+					padding: 14px;
+					text-align: center;
+					color: $textDarkGray;
+					border-bottom: 1px solid $line;
+
+					&.active{
+						background-color: white;
+						color: $textBlack;
+					}
+
+					a{
+						width: 100%;
+						height: 100%;
+						font-size: 14px;
+						display: block;
+						color: inherit;
+					}
+				}
+			}
+		}
+	} //service
+
+	.expert{
+		.outer{
+			position: absolute;
+			z-index: 1;
+			top: 93px;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			width: 100%;
+			overflow: scroll;
+			-webkit-overflow-scrolling: touch;
+			.wrapper{
+				position: absolute;
+				z-index: 3;
+				top: 0;
+				background-color: white;
+				width: 100%;
+
+				.column{
+					border-bottom: 1px solid $textLightGray;
+					padding: 17px 16px;
+
+					&:last-child{
+						border-bottom: none;
+					}
+
+					.inner{
+						display: table;
+						width: 100%;
+
+						.grid{
+							display: table-cell;
+							vertical-align: middle;
+
+							&.head{
+								width: 102px;
+								.image{
+									width: 86px;
+									height: 86px;
+									background-position: 50% 50%;
+									background-size: cover;
+									background-repeat: no-repeat;
+								}
+							}
+
+							&.info{
+								.first{
+									line-height: 16px;
+									margin-bottom: 14px;
+								}
+
+								.second{
+									line-height: 12px;
+								}
+
+								.line{
+									display: inline-block;
+									margin-right: -5px;
+									vertical-align: middle;
+
+									&.name{
+										font-size: 20px;
+										color: $textBlack;
+										margin-right: 9px;
+										line-height: 20px;
+									}
+
+									&.pos{
+										font-size: 14px;
+										line-height: 14px;
+										color: $textLightGray;
+									}
+
+									&.years{
+										font-size: 14px;
+										line-height: 14px;
+										color: $textBlack;
+										margin-right: 9px;
+									}
+
+									&.grade{
+										font-size: 14px;
+										line-height: 14px;
+										color: $viOrange;
+									}
+								}
+							}
+
+							&.more{
+								text-align: right;
+								button{
+									background-color: $viGreen;
+									color: white;
+									font-size: 18px;
+									border: 0;
+									line-height: 20px;
+									padding: 12px 23px;
+									border-radius: 6px;
+								}
+							}
+						}
+					}			
+				}
+			}
+		}
+	} // expert
+
+	.info{
+		.outer{
+			position: absolute;
+			z-index: 1;
+			top: 93px;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			width: 100%;
+			overflow: scroll;
+			-webkit-overflow-scrolling: touch;
+
+			.wrapper{
+				position: absolute;
+				z-index: 3;
+				top: 0;
+				background-color: $bgLightGray;
+				width: 100%;
+
+				h3{
+					margin: 0;
+					font-size: 16px;
+					font-weight: bold;
+					margin-bottom: 20px;
+				}
+
+				.vendor-summary{
+					margin-bottom: 15px;
+					background-color: white;
+					.vendor{
+						border-bottom: 1px solid $line;
+						padding: 16px;
+
+						.inner{
+							display: table;
+							width: 100%;
+
+							.head,
+							.score,
+							.favorite{
+								display: table-cell;
+								vertical-align: middle;
+							}
+
+							.head{
+								width: 118px;
+								.image{
+									width: 100px;
+									height: 64px;
+									background-position: 50% 50%;
+									background-size: cover;
+									background-repeat: no-repeat;
+									border: 1px solid $bgLightGray;
+								}
+							}
+
+							.score{
+								.name{
+									font-size: 20px;
+									line-height: 20px;
+									color: $textBlack;
+									margin-bottom: 10px;
+								}
+
+								.star{
+									line-height: 16px;
+									i{
+										font-size: 16px;
+										color: $viOrange;
+									}
+								}
+							}
+
+							.favorite{
+								text-align: right;
+								i{
+									font-size: 16px;
+
+									&.fa-heart-o{
+										color: $textLightGray;
+									}
+
+									&.fa-heart{
+										color: $viOrange;
+									}
+								}
+							}
+						}
+					}
+
+					.evaluation{
+						.grid{
+							padding: 21px 0;
+							border-bottom: 1px solid $line;
+							display: table;
+							width: 100%;
+
+							.one{
+								display: table-cell;
+								text-align: center;
+								width: 33.333333%;
+								border-right: 1px solid $line;
+
+								&:last-child{
+									border-right: none;
+								}
+
+								p{
+									margin:0;
+
+									&.number{
+										font-size: 22px;
+										line-height: 22px;
+										color: $textBlack;
+										margin-bottom: 7px;
+
+										&.total{
+											color: $viOrange;
+										}
+									}
+
+									&.text{
+										font-size: 14px;
+										line-height: 14px;
+										color: $textDarkGray;
+									}
+								}
+							}
+						}
+					}
+				}
+
+				.vendor-special{
+					margin-bottom: 15px;
+					background-color: white;
+					padding: 18px 16px 20px 16px;
+					border-top: 1px solid $line;
+					border-bottom: 1px solid $line;
+
+					.special{
+						margin-bottom: 10px;
+						display: table;
+						width: 100%;
+
+						&:last-child{
+							margin-bottom: 0;
+						}
+
+						.name,
+						.text{
+							display: table-cell;
+							vertical-align: middle;
+						}
+
+						.name{
+							border-radius: 4px;
+							padding: 4px;
+							color: white;
+							font-size: 16px;
+							width: 16px;
+							height: 16px;
+							line-height: 16px;
+
+							&.orange{
+								background-color: $viOrangeVar;
+							}
+
+							&.yellow{
+								background-color: $viKhaki;
+							}
+
+							&.blue{
+								background-color: $viDarkBlueVar;
+							}
+
+							&.green{
+								background-color: $viDarkGreen;
+							}
+
+							&.purple{
+								background-color: $viPurple;
+							}
+						}
+
+						.text{
+							padding-left: 16px;
+							font-size: 16px;
+							line-height: 16px;
+							color: $textBlack;
+						}
+					}
+				}
+
+				.vendor-tag{
+					background-color: white;
+					border-top: 1px solid $line;
+					border-bottom: 1px solid $line;
+					padding: 19px 16px;
+					margin-bottom: 15px;
+
+					h3{
+						margin-bottom: 10px;
+					}
+
+					.tag{
+						margin-right: 10px;
+						margin-top: 10px;
+						color: $viDarkBlueVar;
+						background-color: $viBlueLightest;
+						padding: 6px 10px;
+						font-size: 16px;
+						line-height: 16px;
+						text-align: center;
+						border-radius: 4px;
+
+						&:last-child{
+							margin-right: 0;
+						}
+					}
+				}
+
+				.vendor-info{
+					background-color: white;
+					border-top: 1px solid $line;
+					border-bottom: 1px solid $line;
+					padding-top: 18px;
+
+					h3{
+						padding: 0 16px;
+						margin-bottom: 0;
+					}
+					
+					.column{
+						padding: 21px 16px;
+						border-bottom: 1px solid $line;
+
+						&:last-child{
+							border-bottom: 0;
+						}
+
+						.label,
+						.text{
+							display: inline-block;
+							margin-right: -5px;
+							vertical-align: middle;
+						}
+
+						.label{
+							margin-right: 15px; 
+							font-size: 16px;
+							line-height: 16px;
+							color: $textBlack;
+						}
+
+						.text{
+							width: calc(100% - 85px);
+							p{
+								margin: 0;
+								font-size: 16px;
+								color: $textDarkGray;
+								overflow: hidden;
+								text-overflow: ellipsis; 
+								display: -webkit-box;
+								-webkit-line-clamp: 3;
+								-webkit-box-orient: vertical;
+							}
+
+							a{
+								color: $viBlue;
+								border-bottom: 1px solid $viBlue;
+							}
+
+							.map-modal-overlay{
+								.text-center{
+									a{
+										color: white;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+
+}

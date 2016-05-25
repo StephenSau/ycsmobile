@@ -1,0 +1,76 @@
+/* ===================
+  VI Standard Colors
+  =================== */
+
+// Greyscale
+
+$textBlack: #1d1d1d;
+$textDarkGray: #888;
+$textLightGray: #adadad;
+
+// Primary VI colors
+
+$viBlue: #047bce;
+$viBlueLight: #4fa2dd;			// mainly for button bg
+$viBlueLightest: #e5f0f8;		// as bgcolor
+$viBlueDark: #006ebb;				// for active button / nav bg
+
+$viOrange: #f06d54;
+$viOrangeDark: #da5238;			// for button bg and hover text
+$viOrangeLight: #f6907c;		// for bgColor and lines
+
+$viGreen: #7abb55;
+$viGreenDark: #5ca234;			// for button bg and hover text
+$viGreenLight: #c4e6b1;			// for bgColor and lines 
+
+// Border and Outline
+
+$line: #ddd;
+
+// Backgrouds
+
+$bgLightGray: #f5f5f5;
+$bgLighterGray: #f9f9f9;
+
+
+// Sencondary VI colors
+
+$viRed: #dc2e1c;						// alerts, danger, etc
+$viDarkGreen: #32a680;			// progress bg color
+$viKhaki: #c7b44b;					// for some yellowish icon bg
+$viGold: #c1b597;						// for some light-gold icon bg
+$viOrangeVar: #f89647;			// for some orange icon bg
+$viPurple: #986ab1;					// for some purple icon bg
+$viDarkBlueVar: #3873aa;		// for some blue icon bg
+
+// Global Text Overrides
+
+$globalAnchorText: $viBlue;
+
+/* ===================
+  WWW UI Colors (deprecated)
+  =================== */
+
+$www_textBlack: #313131;
+$www_textDarkGray: #666;
+$www_textLightGray: #969696;
+$www_textLighterGray: #bcbcbc;
+
+$www_line: #ebebeb;
+$www_lineDark: #d3d3d3;
+
+$www_bgLightGray: #f9f9f9;
+$www_viBlueLighter: #96c3e3;		// mainly for lines (to be deprecated)
+
+
+/* ===================
+  Util Functions
+  =================== */
+
+@function black($alpha){
+	@return rgba(0,0,0, $alpha);
+}
+
+@function white($alpha){
+	@return rgba(255,255,255, $alpha);
+}

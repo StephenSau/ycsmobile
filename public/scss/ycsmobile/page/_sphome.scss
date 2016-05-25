@@ -1,0 +1,367 @@
+#position-wrapper{
+	display: none;
+
+  &.show{
+		background-color: black(0.5);
+		position: fixed;
+		height: 100%;
+		width: 100%;
+		z-index: 4;
+		display: -webkit-flex !important;
+	  display: flex !important;
+	  -webkit-align-items: center;
+	  align-items: center;
+	  -webkit-justify-content: center;
+	  justify-content: center;
+  }
+
+  .inner{
+		max-width: 1024px;
+		margin: 0 auto;
+  	width: calc(100% - 32px);
+  	.part{
+			background-color: white;
+			border-radius: 6px;
+			padding-bottom: 4px;
+
+			&.cancel{
+				margin-top: 14px;
+				padding-top: 4px;
+
+				.btn-wrapper{
+					button{
+						border-top: 0;
+					}
+				}
+			}
+
+
+			.info{
+				font-size: 16px;
+				color: $textLightGray;
+				padding: 21px 16px;
+
+				p{
+					margin: 0;
+				}
+
+				.address{
+					padding-top: 14px;
+					padding-bottom: 4px;
+					color: $textBlack;
+				}
+			}
+
+			.redirect{
+				padding: 25px 16px;
+				p{
+					margin: 0;
+					margin-bottom: 20px;
+					font-size: 18px;
+					color: $textBlack;
+				}
+
+				input{
+					width: calc(100% - 22px);
+					padding: 10px;
+					border: 1px solid $line;
+					border-radius: 4px;
+					color: $textDarkGray;
+					font-size: 16px;
+				}
+			}
+
+			.btn-wrapper{
+				button{
+					padding: 16px 0;
+					width: 100%;
+					border: none;
+					background-color: white;
+					border-top: 1px solid $line;
+					color: $viBlue;
+				}
+
+				&.cancel{
+					margin-top: 14px;
+				}
+			}
+		}
+  }
+}
+
+.topBar {
+	a.select-city {
+		display: block;
+
+		i {
+			&,
+			* {
+				color: white;
+			}
+
+			position: relative;
+			top: 2px;
+			font-size: 20px;
+		}
+	}
+}
+
+.city-list-wrapper {
+	@include cityListWrapper;
+}
+
+#sphomeList{
+	background-color: white;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+	position: relative;
+
+	.city-list-container {
+		display: none;
+
+		&.active{
+			display: block;
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			z-index: 1005;
+		}
+	}
+}
+
+.filter-wrapper{
+	width: 100%;
+	display: table;
+	background-color: $bgLightGray;
+	padding: 9px 0;
+	border-bottom: 1px solid $line;
+
+	&.active{
+		background-color: white;
+
+		.area,
+		.distance{
+			p{
+				&.active{
+					color: $viBlue;
+				}
+			}
+		}
+	}
+
+	.area,
+	.distance,
+	.search{
+		display: table-cell;
+		padding: 0 15px;
+
+		i{
+			color: $textLightGray;
+		}
+	}
+
+	.area,
+	.distance{
+		width: 45%;
+		border-right: 1px solid $line;
+		position: relative;
+
+		p{
+			font-size: 16px;
+			color: $textBlack;
+			margin: 0;
+
+			&.active{
+				color: $viBlue;
+			}
+		}
+
+		i{
+			position: absolute;
+			right: 16px;
+			top: 2px;
+		}
+	}
+
+	.search{
+		width: 10%;
+		text-align: center;
+	}
+}
+
+.filter-list{
+	background-color: black(0.5);
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	z-index: 3;
+	display: block;
+
+	.wrapper{
+		position: relative;
+		width: 100%;
+		height: 100%;
+
+		.inner{
+			width: 100%;
+			position: absolute;
+			top: 0;
+			z-index: 10;
+			background-color: white;
+
+			.area{
+				padding: 9px 16px;
+				border-bottom: 1px solid $line;
+				position: relative;
+
+				p{
+					margin: 0;
+					color: $textBlack;
+					font-size: 16px;
+
+					&.active{
+						color: $viBlue;
+					}
+				}
+
+				i{
+					position: absolute;
+					top: 11px;
+					right: 16px;
+					color: $viBlueLight;
+				}
+			}
+		}
+	}
+}
+
+.location-wrapper{
+	background-color: $bgLightGray;
+	padding: 14px 15px;
+	position: relative;
+	border-bottom: 1px solid $line;
+
+	.address{
+		font-size: 14px;
+		color: $textDarkGray;
+	}
+
+	.current{
+		i{
+			position: absolute;
+			top: 16px;
+			right: 16px;
+			color: $textLightGray;
+		}
+	}
+}
+
+section{
+	padding: 20px 15px;
+	border-bottom: 1px solid $line;
+
+	&:last-child{
+		border-bottom: 0;
+	}
+
+
+	a{
+		color: inherit;
+		display: block;
+	}
+
+	.title{
+		margin-bottom: 11px;
+	}
+
+	.location{
+		margin-bottom: 10px;
+	}
+
+	.title{
+		font-size: 18px;
+		color: $textBlack;
+		line-height: 30px;
+	}
+
+	.location{
+		line-height: 14px;
+
+		.address,
+		.distance{
+			display: inline-block;
+			vertical-align: bottom;
+			margin-right: -6px;
+		}
+
+		.address{
+			font-size: 14px;
+			width: calc(100% - 83px);
+			color: $textDarkGray;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis; 
+			line-height: 14px;
+		}
+
+		.distance{
+			text-align: right;
+			margin-left: 30px;
+			width: 53px;
+			color: $textLightGray;
+			font-size: 12px;
+			line-height: 12px;
+		}
+	}
+
+	.situation{
+		line-height: 22px;
+		.recommend,
+		.hot,
+		.score{
+			display: inline-block;
+			margin-right: -6px;
+			vertical-align: middle;
+		}
+
+		.recommend,
+		.hot{
+			background: $viOrange;
+			padding: 4px 5px;
+			color: #fff;
+			font-size: 12px;
+			line-height: 12px;
+			text-align: center;
+			border-radius: 2px;
+		}
+
+		.recommend{
+			margin-right: 4px;
+
+			&.onlyOne{
+				margin-right: -6px;
+			}
+		}
+
+		.score{
+			color: $viOrange;
+			font-size: 14px;
+			padding-top: 2px;
+
+			&.notAlone{
+				margin-left: 10px;
+			}
+		}
+	}
+}
+
+.no-data{
+	margin: 0;
+	background-color: $bgLightGray;
+	color: $textBlack;
+	text-align: center;
+	padding-top: 14px;
+}

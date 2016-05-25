@@ -1,0 +1,171 @@
+
+html{
+	font-size:16px;
+}
+h3,ul,dt,dd{
+	margin:0;
+	padding:0;
+}
+
+li{
+	list-style:none;
+}
+
+i,em{
+	font-style:normal;
+}
+
+@mixin border-radius-icon($color,$borderColor,$bg){
+	color:$color;
+	border:1px solid $borderColor;
+	background-color:$bg;
+}
+@mixin box-style($position:top){
+	display:-webkit-box;
+	display:-moz-box;
+	-webkit-box-align:$position;
+	-moz-box-align:$position;
+}
+.table{
+	display:table;
+	width:100%;
+}
+.tr{
+	display:table-row;
+}
+.td{
+	display:table-cell;
+}
+
+
+#allsorts{
+
+	// seachbox here linkin topbar
+
+	.search{
+		box-sizing:border-box;
+		padding:16px 16px 14px;
+		background-color:$bgLightGray;
+		position:relative;
+
+		&.active{
+			background-color:white(1);
+			.list{
+				em{
+					color:$viBlue;
+				}
+			}
+		}
+
+		.list,.search-btn{
+			vertical-align:middle;
+		}
+		.list{
+			padding-right:4%;
+			width:91%;
+			
+			>i{
+				float:right;
+				color:$textLightGray;
+				font-size:1.5em;
+			}
+			
+		}
+		.submenu {
+			position:absolute;
+			top:54px;
+			left:0;
+			width:100%;
+			background-color:rgba(127, 127, 127,0.5);
+		}
+		nav{
+			position:absolute;
+			left:0;
+			top:0;
+			width:100%;
+			background-color:white(1);
+
+			dl{
+			border-top:1px solid $line;
+			}
+			dt,dd{
+				padding:16px 16px 13px;
+				border-bottom:1px solid $line;
+
+				&.active{
+					color:$viBlue;
+				}
+			}
+
+			i{
+				float:right;
+			}
+		}
+		.search-btn{
+			width:9%;
+			padding-left:4%;
+			border-left:1px solid $line; 
+			text-align:right;
+			>span{
+				color:$textLightGray;
+			}
+		}
+	}
+	.service-list{
+		background-color:white(1);
+		ul{
+			display:table;
+			box-sizing:border-box;
+			width:100%;
+		}
+		img{
+			width:100%;
+		}
+
+		.coupon-icon{
+			@include border-radius-icon($viOrange,$viOrange,white(1));
+			margin-right:5px;
+		}
+
+		li{
+			
+			>a{
+				@include box-style(center);
+				box-sizing:border-box;
+				width:100%;
+				padding:24px 4% 19px;
+				border-bottom:1px solid $line;
+			}
+
+			.pic{
+				width:29.6%;
+			}
+			.detail {
+				width:64%;
+				vertical-align:top;
+				h3{
+					color:$textBlack;
+					font-size:1.125em;
+				}
+				p:first-of-type{
+					padding:9px 0;
+					color:$textDarkGray;
+				}
+			}
+			.direction{
+				width:6.4%;
+				color:$www_textLighterGray;
+				font-size:2em;
+			}
+
+			&:last-child{
+				>.pic,>.detail,>a{
+					border:none;
+				}
+			}
+		}
+	}
+	
+	
+}
+

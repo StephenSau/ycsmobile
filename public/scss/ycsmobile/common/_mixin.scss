@@ -1,0 +1,31 @@
+@mixin box-sizing ($modal: border-box) {
+	box-sizing: $modal;
+	-moz-box-sizing: $modal;
+	-webkit-box-sizing: $modal;
+}
+
+@mixin ellipsis{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+@mixin nonListUl {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+@mixin cityListWrapper{
+	display: none;
+
+	&.active{
+		display: block;
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		z-index: 1005;
+	}	
+}

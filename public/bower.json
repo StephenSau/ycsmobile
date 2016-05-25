@@ -1,0 +1,33 @@
+{
+  "name": "ycs_mobile",
+  "version": "0.0.1",
+  "authors": [
+    "Phoenix Wong"
+  ],
+  "description": "1caishui.com touch screen version",
+  "moduleType": [
+    "node"
+  ],
+  "license": "MIT",
+  "homepage": "m.1caishui.com",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "./bower",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "requirejs": "~2.1.19",
+    "bootstrap-sass": "~3.3.6",
+    "fontawesome": "~4.6.0",
+    "modernizr": "~2.8.3",
+    "vue": "~1.0.21",
+    "vue-async-data": "~1.0.2",
+    "vue-resource": "^0.7.0",
+    "vue-validator": "^2.0.1",
+    "lazyload": "^3.2.2",
+    "vue-touch": "^1.1.0"
+  }
+}

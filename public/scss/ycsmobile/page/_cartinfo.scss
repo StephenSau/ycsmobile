@@ -1,0 +1,374 @@
+html{
+	font-size:16px;
+}
+h2,h3,ul,p,figure,dl,dd,dt{
+	margin:0;
+	padding:0;
+}
+h2,h3,h4{
+	font-size:1em;
+	font-weight:normal;
+}
+
+li{
+	list-style:none;
+}
+
+i,em{
+	font-style:normal;
+}
+@mixin table-layout($position:top){
+	display:table-cell;
+	vertical-align:$position;
+}
+
+@mixin padding-space{
+	padding-left:30px;
+	padding-right:30px;
+}
+
+@mixin box-style($position:center){
+	display:-webkit-box;
+	display:-moz-box;
+	-webkit-box-align:$position;
+	-moz-box-align:$position;
+}
+@mixin box-flex($flex : 1){
+	box-flex:$flex;
+	-webkit-box-flex:$flex;
+	-moz-box-flex:$flex;
+}
+@mixin border-radius-icon($color,$borderColor,$bg,$width:auto,$ph:5px,$pw:15px,$fontsize:1em){
+	box-sizing:border-box;
+	color:$color;
+	border:2px solid $borderColor;
+	background-color:$bg;
+	padding:$ph $pw;
+	font-size:$fontsize;
+	border-radius:3px;
+	width:$width;
+}
+
+.tb{
+	display:table;
+	width:100%
+}
+.tr{
+	display:table-row;
+}
+.td{
+	display:table-cell
+}
+
+
+#cartinfo{
+	/*nav here start*/
+	.step {
+		width: 100%;
+		@include clearfix;
+		li{
+			float: left;
+			width: 25%;
+			font-size: .875em;
+			position: relative;
+			text-align: center;
+			height: 40px;
+			line-height: 40px;
+			text-indent: 1em;
+			background-color: $bgLightGray;
+			color: $textLightGray;
+			&:nth-child(1){
+				z-index: 4;
+			}
+			&:nth-child(2){
+				z-index: 3;
+			}
+			&:nth-child(3){
+				z-index: 2;
+			}
+			&:nth-child(4){
+				z-index: 1;
+				&:after {
+					content: none;
+				}
+			}
+			&:after{
+				content: " ";
+				position: absolute;
+				width: 16px;
+				height: 40px;
+				display: block;
+				top: 0;
+				right: -16px;
+				background-image: url('../img/step-angle.png');
+				background-size: 16px 80px;
+				background-position: 0 0;
+			}
+			&.active{
+				color: #fff;
+				background-color: #0eb58c;
+				&:after{
+					background-position: 0 -40px;
+				}
+			}
+		}
+	}
+
+	>section{
+		background-color:white(1);
+	}
+	.service-list{
+		ul{
+			display:table;
+			width:100%;
+		}
+
+		li{
+			display:table-row;
+
+
+			&:last-of-type{
+				>div{
+					padding-bottom:0;
+				}
+					
+			}
+
+			>div{
+				@include table-layout;
+				padding:1rem 0 0.875rem;
+				border-bottom:1px solid $line;
+				color:$textBlack;
+				
+				&:first-of-type{
+					width:26%;
+					text-align:center;
+					color:$textDarkGray;
+					font-size:0.875rem;
+				}
+				&:last-of-type{
+					width:74%;
+				}
+
+				.area{
+					float:left;
+
+					+span{
+						float:right;
+						padding-right:4%;
+						color:$viBlue;
+						font-size:0.875rem;
+					}
+				}
+			}
+		}
+		dl{
+			display:table;
+			width:100%;
+		}
+		.des{
+			.item{
+
+				>p:nth-of-type(2){
+					color:$textDarkGray;
+					font-size:0.875rem;
+				}
+			}
+
+			.multiple{
+				padding-top: 0.75rem;
+
+				&:first-of-type{
+					padding-top:0;
+				}
+			}
+
+		}
+		.options {
+			p{
+				color:$textDarkGray;
+				font-size:0.875rem;
+			}
+		}
+		dd{
+			display:table-row;
+
+			&:first-of-type{
+				.des,span{
+					padding-top:0;
+				}
+			}
+			&:last-of-type{
+				.des,span{
+					border:none;
+				}
+			}
+
+			.des,span{
+				@include table-layout(middle);
+				padding:1rem 0 0.75rem;
+				border-bottom:1px solid $line;
+				
+			}
+			&.active{
+				.des{
+					p{
+						color:$viBlue;
+					}
+				}
+				>span{
+					color:$viBlue;
+				}
+			}
+
+			>span{
+				padding-right:3%;
+				color:$textLightGray;
+				font-size:1.5rem;
+			}
+		}
+
+	
+	}
+	
+	.consult{
+			margin-bottom:57px;
+
+			.description{
+			@include padding-space;
+			padding-top:0.625rem;
+			padding-bottom:0.625rem;
+			width:100%;
+			box-sizing:border-box;
+
+			@include box-style;		
+			p:first-of-type{
+				margin-right:10px;
+				-webkit-box-flex:1;
+				-moz-box-flex:1;
+				color:$textDarkGray;
+			}
+		}
+	}
+
+	.next-step{
+		position:fixed;
+		left:0;
+		bottom:0;
+		background-color:$bgLightGray;
+		padding:10px 0 10px;
+		width:100%;
+		border-top:1px solid $line;
+		border-bottom:1px solid $line;
+		text-align:center;
+		.next-btn{
+			margin:0 3%;
+		}
+		a{
+			// @include border-radius-icon(white(1),$viOrange,$viOrange,50%);
+			box-sizing:border-box;
+		}
+	}
+
+	
+	.radio-check,.checkbox-check{
+		margin : 0 -1rem;
+		dd{
+			
+			@include box-style(center);
+			padding:1rem 1rem 0.75rem;
+			border-bottom:1px solid $line;
+			.des{
+				@include box-flex(8);
+			}
+			&.active{
+				.des{
+					p{
+						color:$viBlue;
+					}
+				}
+				>span{
+					color:$viBlue;
+				}
+			}
+
+			>span{
+				padding-right:3%;
+				color:$textLightGray;
+				font-size:1.5rem;
+			}
+		}
+		>p{
+			
+			margin:0.5625rem 1rem;
+			color:$textDarkGray;
+			// line-height:41px;
+
+			>i{
+				float:right;
+			}
+			>span{
+				display:inline-block;
+				line-height:2.5625rem;
+			}
+		}
+	}
+
+	.size-check{
+		margin:0 -1rem;
+		li{
+			&.active{
+				.detail{
+					color:$viBlue;
+				}
+			}
+		}
+
+		.detail{
+			@include box-style;
+			padding:1rem 1rem 0.75rem;
+			border-bottom:1px solid $line;
+		}
+
+		.des{
+			@include box-flex(8);
+		}
+		.options{
+			padding : 0 1rem;
+			border-bottom : 1px solid $line;
+			background-color:$bgLightGray;
+
+			label{
+				display:block
+			}
+
+			li{
+				padding-top : 0.75rem;
+				@include box-style(start);
+
+				h2{
+					width:26%;
+					color:$textDarkGray;
+				}
+				>.item{
+					width:74%;
+					text-align:right;
+					border-bottom:1px solid $line;
+
+					p{
+						padding-bottom: 1.5rem;
+
+						&:last-of-type {
+							padding-bottom:0.75rem;
+						}
+					}
+				}
+			}
+
+			>p{
+				text-align:right;
+				margin:0.5625rem 0;
+			}
+		}
+	}
+}

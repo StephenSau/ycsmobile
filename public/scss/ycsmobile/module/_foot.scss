@@ -1,0 +1,28 @@
+.footer{
+	p{
+		&.static{
+			position: static;
+		}
+		padding: 0;
+		margin: 0;
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		padding: 1em 0;
+		border-top: 1px solid $line;
+		border-bottom: 3px solid  $viBlue;
+		text-align: center;
+		color: $textLightGray;
+		a{
+			color: $viBlue;
+			text-decoration: underline;
+		}
+		i{
+			font-style: normal;
+			font-size: 1.25em;
+		}
+	}
+	
+}
+

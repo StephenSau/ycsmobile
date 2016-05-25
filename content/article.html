@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--=include ../tpl/_commonhead.html -->
+  <title>壹财税资讯_壹财税</title>
+  <meta name="keywords" content="..." />
+  <meta name="description" content="..." />
+  <link href="/public/css/article.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<header id="globalTopBar" v-cloak>
+	<top-bar>壹财税资讯</top-bar>
+	<div class="city-list-wrapper" v-bind:class="{active: showList}">
+		<city-list :show-list.sync="showList" :selected-city.sync="selectedCity" :ip-city="ipCity"></city-list>
+	</div>
+</header>
+
+<div class="main" id="articleDetail" v-cloak>
+	<div class="title">
+		<h3>{{title}}</h3>
+	</div>
+	<div class="released clearfix">
+		<p class="pull-left">{{released}}</p>
+		<a href="/app/zixunhome.html" class="pull-right">查看更多财税咨询</a>
+	</div>
+	<div id="content-wrapper"></div>
+	<div class="origin clearfix">
+		<p class="pull-left region">来源：{{region}}</p>
+		<p class="pull-left author">作者：{{author}}</p>
+		<a href="/app/zixunhome.html" class="pull-right">查看更多财税咨询</a>
+	</div>
+
+	<back-to-top top="300"></back-to-top>
+</div>
+
+<footer id="footerLogin" class="main">
+	<footer-login></footer-login>
+</footer>
+
+<!--=include ../tpl/_commonfooter.html -->
+<!--=include ../tpl/_commonjs.html -->
+<script src="/public/js/article.js" type="text/javascript"></script>
+
+</body>
+</html>

@@ -1,0 +1,211 @@
+
+.expand-transition {
+  transition: all .3s ease;
+  height: 30px;
+  padding: 10px;
+  overflow: hidden;
+}
+
+.expand-enter, .expand-leave {
+  height: 0;
+  padding: 0 10px;
+  opacity: 0;
+}
+
+.form-warn-line{
+	margin: 0;
+	background-color: $viBlueLightest;
+	text-align: center;
+	color: $viBlue;
+}
+
+.form-tips-line{
+	color: $viBlueLight;
+	text-align: center;
+	margin: 0;
+	padding-top: .71em;
+	span{
+		color: $viOrange;
+	}
+}
+
+.form{
+	padding-top: 1em;
+	li{
+		padding: 0 1em;
+	}
+	.form-input-line, .form-password-line{
+		position: relative;
+		background-color: #ffffff;
+		padding-top: .75em;
+		padding-bottom: .75em;
+		margin-top: -1px;
+		border-top: 1px solid $line;
+		border-bottom: 1px solid $line;
+		&:before{
+			position: absolute;
+			display: block;
+			width: 1em;
+			border-top: 1px solid #ffffff;
+			top: -1px;
+			left: 0;
+			content: " ";
+		}
+		&:first-child{
+			&:before{
+				content: none;
+			}
+		}
+	}
+
+	.form-feet-button{
+		.form-area{
+			@include box-sizing;
+			padding-right: 8em;
+		}
+		.btn{
+			position: absolute;
+			min-width: 5em;
+			text-align: center;
+			right: 1em;
+			top: .4em;
+		}
+		.form-msg{
+			line-height: 36px;
+			display: inline-block;
+			&:after{
+				content: ".";
+				opacity: 0;
+			}
+		}
+	}
+
+	.form-area{
+		width: 100%;
+	}
+
+	.form-text-line, .form-button-line{
+		margin-top: 1em;
+		margin-bottom: 1em;
+	}
+
+	.form-tips-line+.form-input-line:before{
+		content: none!important;
+	}
+
+	.form-tips-line+.form-password-line:before{
+		content: none!important;
+	}
+
+	.form-text{
+		width: 100%;
+		padding: .25em 1.5em .25em 0;
+		color: $textBlack;
+		background-color: #ffffff;
+		border: none;
+		@include box-sizing;
+		border-radius: 4px;
+	}
+
+
+
+	.form-area-warn{
+		color: #f06d54;
+		padding: 0;
+		margin: 0 0 -0.5em 0;
+
+	}
+
+	.form-error-icon{
+		font-size: 1.25em;
+		color: #f06d54;
+		margin-left: -1em;
+	}
+
+	.form-text-line{
+		.form-error-icon{
+			margin-left: 1em;
+		}
+	}
+
+	.form-password-line {
+		.form-area{
+			@include box-sizing;
+			padding-right: 82px;
+		}
+	}
+
+	.form-button-line{
+		.btn{
+			width: 100%;
+		}
+
+		.btn-orange+.btn-blue{
+			background: none;
+			color: $viBlue;
+		}
+	}
+
+	.btn[disabled]{
+		opacity: 1;
+		background-color: #ddd;
+		color: $textDarkGray;
+		border-color: #ddd; 
+
+	}
+
+	.btn-swtich{
+		position: absolute;
+		width: 64px;
+		overflow: hidden;
+		height: 32px;
+		border-radius: 16px;
+		background-color: $viBlue;
+		right: 1em;
+		top: .75em;
+		b{
+			display: inline-block;
+			width: 38px;
+			padding: 0 5px;
+			height: 32px;
+			line-height: 32px;
+			
+			color: #ffffff;
+			&:first-child{
+				text-align: left;
+				font-size: .75em;
+				font-weight: normal;
+			}
+			&:last-child{
+				text-indent: 1em
+			}
+		}
+		em{
+			height: 28px;
+			width: 28px;
+			display: block;
+			position: absolute;
+			border-radius: 14px;
+			background-color: #fff;
+			top: 2px;
+			left: 34px;
+		}
+		span{
+			position: relative;
+			display: block;
+			width: 108px;
+			height: 36px;
+		}
+		&.on-password{
+			span{
+				margin-left: -32px;
+			}
+		}
+		&.on-text{
+			span{
+
+				margin-left: 0;
+			}
+		}
+	}
+}

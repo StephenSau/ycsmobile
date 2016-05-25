@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--=include ../tpl/_commonhead.html -->
+  <title>壹财税</title>
+  <meta name="keywords" content="..." />
+  <meta name="description" content="..." />
+  <link href="/public/css/register.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<header id="globalTopBar">
+	<top-bar v-cloak>壹财税-企业服务领航者</top-bar>
+</header>
+
+<div class="main" id="register" v-cloak>
+	<ol class="step">
+		<li :class="{'active': step.one}">输入手机号</li>
+		<li :class="{'active': step.two}">输入短信验证码</li>
+		<li :class="{'active': step.three}">设置用户名和密码</li>
+	</ol>
+	<section v-if="step.one" class="step-one-box">
+		<validator name="oneVt">
+			<p v-if="forms.one.warn" class="form-warn-line" transition="expand">{{{forms.one.warnHtml}}}</p>
+			<form @submit.prevent="showCodeBox" novalidate>
+				<ol class="form">
+					<li class="form-input-line" v-if="mobile = forms.one.fields.mobile">
+						<div class='form-area'>
+							<input autocomplete="off" :id="mobile.id" z-index="1" :class="{'form-text': true}" :type="mobile.type" v-model="mobile.value" :placeholder="mobile.placeholder" :maxlength="mobile.maxlength" :field="mobile.name" v-validate="mobile.validate"/><i v-if="$oneVt.mobile.dirty && $oneVt.mobile.invalid || mobile.invalid" class="form-error-icon fa fa-exclamation-circle"></i>
+						</div>
+					</li>
+					<li class="form-text-line" v-if="agree = forms.one.fields.agree">
+						<div class='form-area'>
+							<input :id="agree.id" z-index="2"  :type="agree.type"  :checked="agree.checked"  :field="agree.name" v-validate="agree.validate"/><label :for="agree.id">{{{agree.label}}}</label><i v-if="$oneVt.agree.dirty && $oneVt.agree.invalid" class="form-error-icon fa fa-exclamation-circle"></i>
+						</div>
+					</li>
+					<li class="form-button-line"><div class='form-area'><button class="btn btn-block btn-orange" type="submit" :disabled="$oneVt.invalid">发送验证码</button></div></li>
+				</ol>
+			</form>
+		</validator>
+	</section>
+	<section v-if="step.two" class="step-two-box">
+		<validator name="twoVt">
+			<p v-if="forms.two.warn" class="form-warn-line" transition="expand">{{{forms.two.warnHtml}}}</p>
+			<form @submit.prevent="" novalidate>
+				<ol class="form">
+					<li class="form-input-line" v-if="code = forms.two.fields.code">
+						<div class='form-area'>
+							<input autocomplete="off" :id="code.id" z-index="1" :class="{'form-text': true}" :type="code.type" v-model="code.value" :placeholder="code.placeholder" :maxlength="code.maxlength" :field="code.name" v-validate="code.validate"/><i v-if="$twoVt.code.dirty && $twoVt.code.invalid || code.invalid" class="form-error-icon fa fa-exclamation-circle"></i>
+						</div>
+					</li>
+					<li class="form-button-line"><button class="btn btn-block btn-orange" type="submit" :disabled="$twoVt.invalid">提交验证码</button></li>
+				</ol>
+			</form>
+		</validator>
+	</section>
+	<section v-if="step.three" class="step-three-box">
+		<validator name="threeVt">
+			<p v-if="!$threeVt.dirty && !forms.three.warn" class="form-tips-line">为了更好地保护账号安全，请设置用户名和登录密码</p>
+			<p v-if="$threeVt.dirty && $threeVt.invalid || forms.three.warn" class="form-warn-line" transition="expand">{{{forms.three.warnHtml}}}</p>
+			<form @submit.prevent="" novalidate>
+				<ol class="form">
+					<li class="form-input-line" v-if="username = forms.three.fields.username">
+						<div class='form-area'>
+							<input autocomplete="off" :id="username.id" z-index="1" :class="{'form-text': true}" :type="username.type" v-model="username.value" :placeholder="username.placeholder" :maxlength="username.maxlength" :field="username.name" v-validate="username.validate"/><i v-if="$threeVt.username.dirty && $threeVt.username.invalid || username.invalid" class="form-error-icon fa fa-exclamation-circle"></i>
+						</div>
+						<p class="form-area-warn" v-if="$threeVt.username.modified && $threeVt.username.invalid">{{$threeVt.username.errors[0].message}}</p>
+					</li>
+					<li class="form-input-line form-password-line" v-if="password = forms.three.fields.password">
+						<div class='form-area'>
+							<input autocomplete="off" :id="password.id" z-index="2" :class="{'form-text': true}" :type="password.type" v-model="password.value" :placeholder="password.placeholder" :maxlength="password.maxlength" :field="password.name" v-validate="password.validate"/><i v-if="$threeVt.password.dirty && $threeVt.password.invalid || password.invalid" class="form-error-icon fa fa-exclamation-circle"></i><a href="javascript:void(0)" @click="changeType(password)" :class="{'btn-swtich': true, 'on-text': password.type === 'text', 'on-password': password.type === 'password'}"><span><b>abc</b><em></em><b>…</b></span></a>
+						</div>
+						<p class="form-area-warn"  v-if="$threeVt.password.modified && $threeVt.password.invalid">{{$threeVt.password.errors[0].message}}</p>
+					</li>
+					<li class="form-button-line"><button class="btn btn-orange" type="submit" :disabled="$threeVt.invalid">完成设置</button><a href="/" class="btn btn-blue">暂不设置</a></li>
+				</ol>
+			</form>
+		</validator>
+	</section>
+	<code-box :show.sync="modals.imgCode"></code-box>
+	<o-hint v-bind:show.sync="hintShow" v-bind:hint-text="hint"></o-hint>
+	<back-to-top></back-to-top>
+</div>
+
+<footer class="footer" id="footer">
+	<foot :data-refresh="refreshFlag"></foot>
+</footer>
+
+<!--=include ../tpl/_commonjs.html -->
+<script src="/public/js/register.js" type="text/javascript"></script>
+</body>
+</html>

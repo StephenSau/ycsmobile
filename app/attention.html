@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<script src="/public/js/vendor/modernizr.js"></script>
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<link href="/public/css/ycsglobal.css" rel="stylesheet" type="text/css">
+
+  <title>注意事项_壹财税</title>
+  <meta name="keywords" content="..." />
+  <meta name="description" content="..." />
+  <link href="/public/css/attention.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<header id="globalTopBar" v-cloak>
+	<top-bar>注意事项</top-bar>
+	<div class="city-list-wrapper" v-bind:class="{active: showList}">
+		<city-list :show-list.sync="showList" :selected-city.sync="selectedCity" :ip-city="ipCity"></city-list>
+	</div>
+</header>
+
+<div class="main" id="attentionList" v-cloak>
+	<section v-for="attention in list">
+		<div class="left">
+			<div class="spec" :class="{'green': $index % 4 === 0, 'blue': $index % 4 === 1, 'orange': $index % 4 === 2, 'red': $index % 4 === 3}">{{attention.spec}}</div>
+		</div>
+		<div class="right">
+			<h3>{{attention.title}}</h3>
+			<div class="detail">{{attention.detail}}</div>
+		</div>
+	</section>
+
+	<back-to-top top="300"></back-to-top>
+</div>
+
+<footer id="footerLogin" class="main">
+	<footer-login></footer-login>
+</footer>
+
+<footer class="global-footer">
+
+	<div>&copy; 壹财税客服电话：<a class="tel" href="tel:4008-310-866">4008-310-866</a></div>
+
+	<aside class="icp">粤ICP备15017127号-1</aside>
+
+</footer>
+<script src="http://api.map.baidu.com/api?v=2.0&ak=5hASIZKOvTTW0zGOE2z1L2QLvfP3WmNf" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" src="/public/js/util.js"></script>
+<script type="text/javascript" src="/public/js/vendor/require.js"></script>
+<script type="text/javascript" src="/public/js/config.js"></script>
+<script src="/public/js/attention.js" type="text/javascript"></script>
+
+</body>
+</html>

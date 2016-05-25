@@ -1,0 +1,325 @@
+
+html{
+	font-size:16px;
+}
+h2,h3,ul,p,figure,dl,dd,dt{
+	margin:0;
+	padding:0;
+}
+
+li{
+	list-style:none;
+}
+
+i,em{
+	font-style:normal;
+}
+@mixin table-layout($position:top){
+	display:table-cell;
+	vertical-align:$position;
+}
+
+@mixin padding-space($w : 20px){
+	padding-left:$w;
+	padding-right:$w;
+}
+
+@mixin box-style{
+	display:-webkit-box;
+	display:-moz-box;
+}
+
+@mixin box-flex($flex : 1){
+	-webkit-box-flex : $flex;
+	-moz-box-flex : $flex;
+}
+
+@mixin border-radius-icon($color,$borderColor,$bg,$width:auto,$ph:5px,$pw:15px,$fontsize:1em){
+	box-sizing:border-box;
+	color:$color;
+	border:2px solid $borderColor;
+	background-color:$bg;
+	padding:$ph $pw;
+	font-size:$fontsize;
+	border-radius:3px;
+	width:$width;
+}
+@mixin box-position($position:center){
+	-webkit-box-align:$position;
+	-moz-box-align:$position;
+}
+
+#shopCartinfo{
+
+	/*nav here start*/
+	.step {
+		width: 100%;
+		@include clearfix;
+		li{
+			float: left;
+			width: 25%;
+			font-size: .875em;
+			position: relative;
+			text-align: center;
+			height: 40px;
+			line-height: 40px;
+			text-indent: 1em;
+			background-color: $bgLightGray;
+			color: $textLightGray;
+			&:nth-child(1){
+				z-index: 4;
+			}
+			&:nth-child(2){
+				z-index: 3;
+			}
+			&:nth-child(3){
+				z-index: 2;
+			}
+			&:nth-child(4){
+				z-index: 1;
+				&:after {
+					content: none;
+				}
+			}
+			&:after{
+				content: " ";
+				position: absolute;
+				width: 16px;
+				height: 40px;
+				display: block;
+				top: 0;
+				right: -16px;
+				background-image: url('../img/step-angle.png');
+				background-size: 16px 80px;
+				background-position: 0 0;
+			}
+			&.active{
+				color: #fff;
+				background-color: #0eb58c;
+				&:after{
+					background-position: 0 -40px;
+				}
+			}
+		}
+	}
+
+	>section{
+		background-color:white(1);
+	}
+	.servicer-list{
+
+		li{
+			@include box-style;
+			@include box-position(end);
+			@include padding-space;
+
+			padding-top:1.08rem;
+			padding-bottom:1.02rem;
+			border-bottom:1px solid $line;
+
+			&.active{
+				background-color:$viBlueLightest;
+			}
+
+			&:last-of-type{
+				border:none;
+			}
+			>div{
+				&:first-of-type{
+					@include box-flex(8);
+				}
+
+				&:last-of-type{
+					@include box-flex;
+				}
+			}
+
+			span{
+
+				color:$textDarkGray;
+
+				em{
+					color:$textBlack;
+				}
+				&:first-of-type{
+					margin-right:10px;
+				}
+			}
+
+			.detail{
+
+				i{
+					margin-right:10px;
+				}
+
+				h2{
+					font-size:1.125rem;
+					margin-bottom:0.6875rem;
+
+					i{
+						color:$textLightGray;
+					}
+				}
+				p{
+					&:first-of-type{
+						margin-bottom:0.6875rem;
+					}
+				}
+			}
+
+			.amount{
+				p{
+					text-align:right;
+					&:first-of-type{
+						margin-bottom:0.89rem;
+						color:$viBlue;
+						font-weight:700;
+					}
+
+					&:last-of-type{
+						color:$textLightGray;
+						font-size:0.75rem;
+					}
+				}
+			}
+
+		}
+	}
+
+	//modal description of servicer here start
+
+	.modal-description{
+		h2{
+			font-size:1.125rem;
+			margin-bottom:0.72rem;
+
+			+p{
+				margin-bottom:1.16rem;
+				color:$textLightGray;
+				font-size:0.875rem;
+			}
+		}
+		ul{
+			border-top:1px solid $line;
+
+			~p{
+				@include box-style;
+				@include box-position(center);
+				margin:1.125rem 0;
+				color:$textDarkGray;
+
+				span{
+					@include box-flex;
+				}
+
+				i{
+					display:block;
+					padding-left:3%;
+					@include box-flex;
+				}
+
+			}
+		}
+		li{
+			float:left;
+			padding:0.8125rem 0;
+			border-bottom:1px solid $line;
+			width:33.333%;
+			text-align:center;
+
+			>p{
+				border-right:1px solid $line;
+
+				&:first-of-type{
+					font-size:1.125rem;
+				}
+				&:last-of-type{
+					font-size:0.875rem;
+					color:$textDarkGray;
+				}
+			}
+
+			&:first-of-type{
+				>p{
+					&:first-of-type{
+						color:$viOrange;
+					}
+				}
+			}
+
+			&:nth-of-type(3n){
+				>p{
+					border-right:none;
+				}
+			}
+		}
+	}
+
+	.btn-group{
+		text-align:center;
+		.btn{
+			box-sizing:border-box;
+			width:48.5%;
+		}
+	}
+
+	.choice-fix{
+		position:fixed;
+		bottom:0;
+		left:0;
+		width:100%;
+		background-color:transparent;
+		
+		.nochoice{
+			padding:0.83rem 0 0.708rem;
+			text-align:center;
+			background-color:rgba(161,201,229,0.85);
+			color:white(1);
+			font-size:1.125rem;
+		}
+
+		.choice{
+			@include padding-space;
+			@include box-style;
+			@include box-position(center);
+			padding-top:0.9375rem;
+			padding-bottom:0.8125rem;
+			background-color:rgba(63,63,63,0.9);
+			.des{
+				p{
+					color:white(1);
+					margin-bottom:0.25rem;
+
+					&:last-of-type{
+						color:$viOrange;
+						margin-bottom:0;
+					}
+				}
+				i{
+					margin-left:5%;
+					color:$textLightGray;
+				}
+			}
+			>div{
+				&:first-of-type{
+					@include box-flex(9)
+				}
+				&:last-of-type{
+					@include box-flex;
+				}
+			}
+		}
+	}
+
+	.expand-transition {
+	  transition: all .3s ease;
+	}
+
+	/* .expand-enter  */
+	/* .expand-leave  */
+	.expand-enter, .expand-leave {
+	  height: 0;
+	  padding: 0 10px;
+	  opacity: 0;
+	}
+}

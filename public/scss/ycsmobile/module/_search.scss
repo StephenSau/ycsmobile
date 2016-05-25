@@ -1,0 +1,119 @@
+.search-box{
+	position: relative;
+	z-index: 100;
+	@include box-sizing;
+	padding: .75em 4.125em .75em 1em;
+	border-bottom: 1px solid $line;
+	width: 100%;
+	background-color: #fff;
+	.search-form{
+		margin: 0;
+		border: 1px solid $line;
+		border-radius: 4px;
+		padding: .5em 0;
+		label{
+			padding: 0 .58em;
+		}
+		.fa-search{
+			color: $textDarkGray;
+		}
+	}
+
+	.search-class{
+		position: relative;
+		cursor: pointer;
+		display: inline-block;
+		border: right;
+		width: 4.5em;
+		padding: 0 .625em;
+		line-height: 2em;
+		border-right: 1px solid $line;
+		color: $viBlue;
+		i{
+			position: absolute;
+			font-size: 1.375em;
+			color: $textDarkGray;
+			top: .25em;
+			right: .1em;
+			transition: transform 0.5s;
+			-moz-transition: transform 0.5s;
+			-webkit-transition: transform 0.5s;
+		}
+		&.active{
+			i{
+				transform: rotate(180deg);
+				-moz-transform: rotate(180deg);
+				-webkit-transform: rotate(180deg);
+			}
+		}
+	}
+
+	.search-text{
+		border: none;
+		background: none;
+		font-size: 1.125em;
+		width: 50%;
+		color: $textDarkGray;
+	}
+
+	.search-reset{
+		position: absolute;
+		background: none;
+		border: none;
+		padding: .5em 0;
+		color: $viBlue;
+		top: .7em;
+		font-size: 1.125em;
+		right: .8em;
+	}
+
+	.search-class-list{
+		position: absolute;
+		background-color: #fff;
+		border: 1px solid $line;
+		left: .2em;
+		top: 5em;
+		padding-left: .8em;
+		li{
+			border-top: 1px solid $line;
+			color: $textBlack;
+			padding: .875em  1.125em .875em 0;
+			cursor: pointer;
+			&:first-child{
+				border-top: none;
+			}
+			&.active{
+				color: $viBlue;
+				cursor: default;
+				img{
+					margin-left: -18px;
+				}
+			}
+		}
+		.icon{
+			width: 18px;
+			height: 18px;
+			vertical-align: text-top;
+			display: inline-block;
+			margin-right: .625em;
+			overflow: hidden;
+			img{
+				margin-left: 0px;
+				width: 36px;
+				height: auto
+			}
+			&.icon-service img{
+				margin-top: 0;
+			}
+			&.icon-servicer  img{
+				margin-top: -18px;
+			}
+			&.icon-expert  img{
+				margin-top: -36px;
+			}
+			&.icon-info  img{
+				margin-top: -54px;
+			}
+		}
+	}
+}

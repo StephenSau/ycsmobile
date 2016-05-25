@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<script src="/public/js/vendor/modernizr.js"></script>
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<link href="/public/css/ycsglobal.css" rel="stylesheet" type="text/css">
+
+  <title>选服务商页_壹财税</title>
+  <meta name="keywords" content="..." />
+  <meta name="description" content="..." />
+  <link href="/public/css/shopCartinfo.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<!-- import global topbar -->
+<header id="globalTopBar" v-cloak>
+	<top-bar>选服务商页_壹财税</top-bar>
+</header>
+
+<!--shop select the sp detail-->
+
+<section id="shopCartinfo" class="main" v-cloak>
+
+	<!--import the nav-->
+	<ol class="step">
+		<li>1.确认服务</li>
+		<li class="active">2.选服务商</li>
+		<li>3.提交订单</li>
+		<li>4.在线支付</li>
+	</ol>
+
+	<!-- sp list start-->	
+	<section class="servicer-list">
+		<ul v-cloak>
+			<!-- <li v-touch:tap="checkServicer(index)" v-for="(index,item) in datalist" class="item{{index}} item" data-active="false" data-origin = "item{{index}} item"> -->
+			<li v-touch:tap="checkServicer(index)" v-for="(index,item) in datalist" :class="{'active':item.status}">
+				<div class="detail">
+					<h2>{{item.title}} <i class="fa fa-fw fa-list-ul" v-touch:tap.stop="showDescription($index)"></i></h2>
+					<p>
+						<span>综合评分 <em>{{item.score}}</em></span><span>共接单量 <em>{{item.quantity}}</em></span>
+					</p>
+					<p><i class="btn btn-orange">推荐</i><i class="btn btn-blue">认证</i></p>
+				</div>
+				<div class="amount">
+					<p>&yen;<em class="amount-point">{{item.amount}}</em></p>
+					<p><b v-get-distance v-bind:u-coord="userCoord" v-bind:addr-text="item.address" class="distance pull-right"></b></p>
+				</div>
+			</li>
+			
+		</ul>
+	</section>
+
+	<!-- sp list end-->
+	<!-- check sp action start-->
+	<section class="choice-fix">
+		
+		<div class="nochoice" v-show="!checked">
+			<p>请选择您心仪的服务商</p>
+		</div>
+
+		<div class="choice" v-show="checked">
+			<div class="des">
+				<p>已选择：<em id="checked-sp">{{checkedName}}</em> <i v-touch:tap="cancelServicerChecked">取消</i></p>
+				<p>小&nbsp;&nbsp;&nbsp;计：&yen;<em id="checked-amount">{{checkedAmount}}</em></p>
+				<p v-show="couponTips">本服务结算时将可自动享受优惠</p>
+			</div>
+			<div class="buy-action">
+				<a href="/app/cartlist.html" class="btn btn-orange">去结算</a>
+			</div>
+		</div>
+	</section>
+	<!-- check sp action end-->
+
+
+	<!--import backToTop-->
+	<back-to-top></back-to-top>
+
+	<modal :show.sync="show" v-cloak>
+		<div slot="modal-header" class="modal-header"></div>
+		<div slot="modal-body" class="modal-body">
+			<div class="modal-description">
+				<h2>{{description.title}}</h2>
+				<p>{{description.address}}</p>
+				<ul class="clearfix">
+					<li>
+						<p>{{description.score}}</p>
+						<p>综合评分</p>
+					</li>
+					<li>
+						<p>{{description.quantity}}</p>
+						<p>共接单量</p>
+					</li>
+					<li>
+						<p>{{description.task}}</p>
+						<p>完成任务</p>
+					</li>
+					<li>
+						<p>{{description.response}}</p>
+						<p>响应速度</p>
+					</li>
+					<li>
+						<p>{{description.service}}</p>
+						<p>服务态度</p>
+					</li>
+					<li>
+						<p>{{description.professional}}</p>
+						<p>综合评分</p>
+					</li>
+				</ul>
+				<p class="clearfix"><span class="btn btn-orange">推荐</span><i>壹财税推荐服务商，服务质量更有保障</i></p>
+				<p class="clearfix"><span class="btn btn-blue">认证</span><i>通过全部三项服务商资质认证（营业资质、经营场所、人员从业资格</i></p>
+			</div>
+			<p class="btn-group">
+				<span class="btn btn-blue">免费电话咨询</span>
+				<span class="btn btn-orange" v-touch:tap="checkedDescription">{{description.checkedText}}</span>
+			</p>
+		</div>
+		<div slot="modal-footer" class="modal-footer"></div>
+	</modal>
+</section>
+
+<script src="http://api.map.baidu.com/api?v=2.0&ak=5hASIZKOvTTW0zGOE2z1L2QLvfP3WmNf" type="text/javascript" charset="utf-8"></script>
+
+<script type="text/javascript" src="/public/js/util.js"></script>
+
+<script type="text/javascript" src="/public/js/vendor/require.js"></script>
+
+<script type="text/javascript" src="/public/js/config.js"></script>
+<script src="/public/js/shopCartinfo.js" type="text/javascript"></script>
+
+</body>
+</html>
+

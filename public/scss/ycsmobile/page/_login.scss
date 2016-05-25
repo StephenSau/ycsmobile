@@ -1,0 +1,44 @@
+p{
+	margin: 0;
+	padding: 0;
+}
+
+
+
+.tab{
+	@include clearfix;
+	width: 100%;
+	li{
+		cursor: pointer;
+		background-color: #ffffff;
+		border-bottom: 3px solid $line;
+		color: $textBlack;
+		text-align: center;
+		float: left;
+		width: 50%;
+		padding: .71em 0;
+		&.active {
+			color: $viBlue;
+			border-bottom: 3px solid $viBlue;
+		}
+	}
+}
+
+.shortcut{
+	padding: 0 1em;
+	@include clearfix;
+	a{
+		color: $viBlue;
+		&:first-child{
+		float: left;
+		}
+		&:last-child{
+			float: right;
+		}
+	}
+}
+
+.ps-line{
+	text-align: center;
+	color: $textDarkGray;
+}

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--=include ../tpl/_commonhead.html -->
+  <title>壹财税</title>
+  <meta name="keywords" content="..." />
+  <meta name="description" content="..." />
+  <link href="/public/css/login.css" rel="stylesheet" type="text/css">
+</head>
+<body id="login">
+
+<header id="globalTopBar">
+	<top-bar v-cloak>壹财税-企业服务领航者</top-bar>
+</header>
+
+<div class="main" v-cloak>
+	<ul class="tab">
+		<li @click="changeTab('user')" :class="{'active': tab.user}">壹财税账号登录</li>
+		<li @click="changeTab('mobile')" :class="{'active': tab.mobile}">手机验证登录</li>
+	</ul>
+	<section v-show="tab.user" class="username-box">
+		<validator name="userVt">
+			<p v-if="forms.userForm.warn" class="form-warn-line" transition="expand">{{{forms.userForm.warnHtml}}}</p>
+			<form @submit.prevent="loginByUsername" novalidate>
+				<ol class="form">
+					<li class="form-input-line" v-if="username = forms.userForm.fields.username">
+						<div class='form-area'>
+							<input  autocomplete="off" :id="username.id" z-index="1" class="form-text" :type="username.type" v-model="username.value" :placeholder="username.placeholder" :maxlength="username.maxlength" :field="username.name" v-validate="username.validate"/><i v-if="$userVt.username.dirty && $userVt.username.invalid || username.invalid" class="form-error-icon fa fa-exclamation-circle"></i>
+						</div>
+					</li>
+					<li class="form-input-line" v-if="password = forms.userForm.fields.password">
+						<div class='form-area'>
+							<input autocomplete="off" :id="password.id" z-index="2" class="form-text" :type="password.type" v-model="password.value" :placeholder="password.placeholder" :maxlength="password.maxlength" :field="password.name" v-validate="password.validate"/><i v-if="$userVt.upassword.dirty && $userVt.upassword.invalid || password.invalid" class="form-error-icon fa fa-exclamation-circle"></i>
+						</div>
+					</li>
+					<li class="form-button-line"><button class="btn btn-block btn-orange" type="submit" :disabled="$userVt.invalid">登录</button></li>
+				</ol>
+				<p class="shortcut">
+					<a href="/app/register.html">快速注册</a>
+					<a href="/app/info.html?tab=findPassword">找回密码</a>
+				</p>
+			</form>
+		</validator>
+	</section>
+	<section v-show="tab.mobile" class="mobile-box">
+		<validator name="mobileVt">
+		<p v-if="forms.mobileForm.warn" class="form-warn-line" transition="expand">{{{forms.mobileForm.warnHtml}}}</p>
+			<form @submit.prevent="loginByMobile" novalidate>
+				<ol class="form">
+					<li class="form-input-line form-feet-button" v-if="mobile = forms.mobileForm.fields.mobile">
+						<div class='form-area'>
+							<input  autocomplete="off" :id="mobile.id" z-index="1" class="form-text" :type="mobile.type" v-model="mobile.value" :placeholder="mobile.placeholder" :maxlength="mobile.maxlength" :field="mobile.name" v-validate="mobile.validate"/><i v-if="$mobileVt.mobile.dirty && $mobileVt.mobile.invalid || mobile.invalid" class="form-error-icon fa fa-exclamation-circle"></i><button :disabled="$mobileVt.mobile.invalid || mobile.onCount" class="btn btn-green" @click="showCodeBox(mobile)">{{mobile.onCount ? (mobile.count + '秒'):'发送验证码'}}</button>
+						</div>
+					</li>
+					<li class="form-input-line" v-if="code = forms.mobileForm.fields.code">
+						<div class='form-area'>
+							<input  autocomplete="off" :id="code.id" z-index="2" class="form-text" :type="code.type" v-model="code.value" :placeholder="code.placeholder" :maxlength="code.maxlength" :field="code.name" v-validate="code.validate"/><i v-if="$mobileVt.code.dirty && $mobileVt.code.invalid || code.invalid" class="form-error-icon fa fa-exclamation-circle"></i>
+						</div>
+					</li>
+					<li class="form-button-line"><button class="btn btn-block btn-orange" type="submit" :disabled="$mobileVt.invalid">登录</button></li>
+				</ol>
+				<p class="ps-line">没有注册过的手机号将自动注册</p>
+			</form>
+		</validator>
+	</section>
+	
+	<code-box url="/user/sendAuthCode4Login.htm" :show.sync="modals.imgCode"></code-box>
+	<dial-box :show.sync="modals.dial"></dial-box>
+	<o-hint v-bind:show.sync="hintShow" v-bind:hint-text="hint"></o-hint>
+</div>
+
+<footer class="footer" id="footer">
+	<foot :data-refresh="refreshFlag"></foot>
+</footer>
+
+<!--=include ../tpl/_commonjs.html -->
+<script src="/public/js/login.js" type="text/javascript"></script>
+</body>
+</html>
